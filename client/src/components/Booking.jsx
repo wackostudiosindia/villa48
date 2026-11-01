@@ -16,7 +16,7 @@ export default function Booking() {
   const panel = 'panel min-w-0 p-[clamp(18px,3vw,30px)]';
 
   return (
-    <Section id="booking" className="grid gap-8 py-[clamp(48px,9vh,100px)]">
+    <Section id="booking" lazy className="grid gap-8 py-[clamp(48px,9vh,100px)]">
       <SectionHead eyebrow={t('b_e')} title={t('b_h')} lead={t('b_lead')} />
       <div className="grid gap-9 xl:grid-cols-2 xl:items-start xl:gap-14">
         <Reveal className={panel}><Calendar /></Reveal>

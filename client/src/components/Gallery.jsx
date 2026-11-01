@@ -4,6 +4,7 @@ import { GALLERY, GALLERY_TABS } from '../data/gallery';
 import Section, { SectionHead } from './Section';
 import Reveal from './Reveal';
 import Lightbox from './Lightbox';
+import Img from './Img';
 import { layoutChanged } from '../lib/skyStore';
 
 /* Editorial grid: portrait photos span two rows, every seventh landscape photo is a large feature tile. */
@@ -16,7 +17,7 @@ export default function Gallery() {
   const choose = (c) => { setCat(c); setTimeout(layoutChanged, 50); };
 
   return (
-    <Section id="gallery" className="grid gap-8 py-[clamp(48px,9vh,100px)]">
+    <Section id="gallery" lazy className="grid gap-8 py-[clamp(48px,9vh,100px)]">
       <SectionHead eyebrow={t('g_e')} title={t('g_h')} />
       <Reveal
         role="group"
@@ -48,17 +49,14 @@ export default function Gallery() {
               className={`tile relative block h-full w-full cursor-zoom-in overflow-hidden bg-forest-deep ${span}`}
               style={{ '--gd': `${Math.min(i, 8) * 0.05}s` }}
             >
-              <img
-                src={`/img/${g.s}.jpg`}
-                width={g.w}
-                height={g.h}
+              <Img
+                name={g.s}
                 alt={t(g.k)}
-                loading="lazy"
-                decoding="async"
+                sizes={span.includes('col-span-2') ? '(min-width: 760px) 790px, 100vw' : '(min-width: 760px) 400px, 50vw'}
                 className="h-full w-full object-cover"
                 onLoad={(e) => e.currentTarget.classList.add('ok')}
                 onError={(e) => e.currentTarget.classList.add('ok')}
-                ref={(el) => el && el.complete && el.classList.add('ok')}
+                imgRef={(el) => el && el.complete && el.classList.add('ok')}
               />
               <span className="caps absolute inset-x-0 bottom-0 bg-linear-to-t from-[rgba(5,20,13,.78)] to-transparent px-3.5 pt-[34px] pb-3 text-left text-[11px] leading-[1.2] font-medium tracking-[.14em] text-cream">
                 {t(g.k)}

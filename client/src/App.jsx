@@ -22,13 +22,13 @@ import QuickBooking from './components/QuickBooking';
 /* One scroll from morning to night: four time-of-day chapters, then the practical sections. */
 const CHAPTERS = [
   { id: 'morning', eyebrow: 'c1t', title: 'c1h', body: 'c1p', next: { href: 'afternoon', label: 'c2t' },
-    photo: { src: '/img/entrance.jpg', width: 900, height: 1600, alt: 'Entrance with potted plants and yellow wall', objectPosition: '50% 62%', caption: 'cap_ent' } },
+    photo: { name: 'entrance-4x3', alt: 'Entrance with potted plants and yellow wall', caption: 'cap_ent' } },
   { id: 'afternoon', flip: true, eyebrow: 'c2t', title: 'c2h', body: 'c2p', next: { href: 'evening', label: 'c3t' },
-    photo: { src: '/img/pool.jpg', alt: 'Glass-fenced swimming pool beside a green lawn', caption: 'cap_pool' } },
+    photo: { name: 'pool-4x3', alt: 'Glass-fenced swimming pool beside a green lawn', caption: 'cap_pool' } },
   { id: 'evening', eyebrow: 'c3t', title: 'c3h', body: 'c3p', next: { href: 'night', label: 'c4t' },
-    photo: { src: '/img/swing.jpg', alt: 'Living area with a hanging swing chair and blue sofas', caption: 'cap_swing' } },
+    photo: { name: 'swing-4x3', alt: 'Living area with a hanging swing chair and blue sofas', caption: 'cap_swing' } },
   { id: 'night', flip: true, eyebrow: 'c4t', title: 'c4h', body: 'c4p', next: { href: 'amenities', label: 'am_e' },
-    photo: { src: '/img/theatre.jpg', alt: 'Home theatre with a projector screen and soft lights', caption: 'k_theatre' } },
+    photo: { name: 'theatre-4x3', alt: 'Home theatre with a projector screen and soft lights', caption: 'k_theatre' } },
 ];
 
 export default function App() {

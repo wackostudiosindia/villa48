@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../lib/i18n';
+import { srcSet, imgUrl } from './Img';
 
 export default function Lightbox({ items, index, onIndex, onClose }) {
   const { t } = useLang();
@@ -38,7 +39,9 @@ export default function Lightbox({ items, index, onIndex, onClose }) {
       <button type="button" aria-label="Previous" onClick={() => step(-1)} className={`${ctl} top-1/2`} style={{ left: 'max(8px,env(safe-area-inset-left,0px))' }}>‹</button>
       <img
         key={g.s}
-        src={`/img/${g.s}.jpg`}
+        src={imgUrl(g.s, 1200)}
+        srcSet={srcSet(g.s)}
+        sizes="(min-width: 1200px) 1200px, 100vw"
         alt={t(g.k)}
         onLoad={() => setLoading(false)}
         ref={(el) => el && el.complete && loading && setLoading(false)}

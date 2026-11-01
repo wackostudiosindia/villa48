@@ -82,7 +82,6 @@
 /* ---------- base ---------- */
 @layer base {
   html { scroll-behavior: smooth; }
-  html.intro { overflow: hidden; }
   body {
     background: var(--sky-bot);
     color: var(--fg);
@@ -114,7 +113,7 @@
   .halo { text-shadow: 0 0 28px var(--halo), 0 0 12px var(--halo); }
   .eyebrow { font: 600 11px/1.3 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
   :root[lang="gu"] .eyebrow { letter-spacing: .06em; }
-  .eyebrow::before { content: ""; display: inline-block; vertical-align: middle; height: 1px; width: 28px; margin-right: 12px; background: var(--color-gold); transition: width .9s var(--ease-out-soft); }
+  .eyebrow::before { content: ""; display: inline-block; vertical-align: middle; height: 1px; width: 28px; margin-right: 12px; background: var(--color-gold); transform-origin: left; transition: transform .9s var(--ease-out-soft); }
   .lead { font-size: clamp(16px, 1.6vw, 18.5px); line-height: 1.65; color: var(--fg-soft); max-width: 50ch; }
   .chev { width: 34px; height: 18px; color: var(--color-gold); display: block; }
 
@@ -128,8 +127,6 @@
     -webkit-background-clip: text; background-clip: text;
     color: transparent !important; -webkit-text-fill-color: transparent; text-shadow: none !important;
   }
-  .shimmer { animation: shimmer 3.2s cubic-bezier(.4, 0, .2, 1) .4s 1 both; }
-  html.intro .shimmer { animation-play-state: paused; }
 
   /* buttons */
   .btn {
@@ -165,7 +162,7 @@
   /* framed photo: thin offset outline like the logo's rectangle */
   .frame { position: relative; margin: 0 14px 14px 0; min-width: 0; }
   .frame::before {
-    content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: 0; pointer-events: none;
+    content: ""; position: absolute; inset: 0; transform: translate(14px, 14px); z-index: 0; pointer-events: none;
     border: 1px solid transparent;
     border-image: linear-gradient(135deg, var(--color-gold-light), rgba(180, 149, 95, .15) 48%, var(--color-gold)) 1;
   }
@@ -176,18 +173,18 @@
   .par img { transform: scale(1.12) translateY(var(--py, 0px)); will-change: transform; }
 
   /* sections settle in as you reach them */
-  html.th .frame::before { transition: inset .9s var(--ease-out-soft), opacity .6s; }
-  html.th section:not(.lit) .frame::before { inset: 0; opacity: .25; }
+  html.th .frame::before { transition: transform .9s var(--ease-out-soft), opacity .6s; }
+  html.th section:not(.lit) .frame::before { transform: none; opacity: .25; }
   html.th .frame > .chev { transition: transform .8s cubic-bezier(.3, 1.6, .5, 1), opacity .6s; }
   html.th section:not(.lit) .frame > .chev { opacity: 0; transform: translateY(10px); }
-  html.th section:not(.lit) .eyebrow::before { width: 0; margin-right: 0; }
+  html.th section:not(.lit) .eyebrow::before { transform: scaleX(0); }
   html.th .frame .ph { transition: clip-path 1.3s var(--ease-out-soft); }
   html.th section:not(.lit) .frame .ph { clip-path: inset(9% 7% 9% 7%); }
 
   /* reveal on scroll */
   .rv { transition: transform .9s cubic-bezier(.2, .7, .2, 1), opacity .9s ease; transition-delay: var(--d, 0s); }
   .rv.pre { transform: translateY(28px); opacity: 0; }
-  html.intro .hero .rv { opacity: 0; transform: translateY(28px); }
+  html.intro .hero .rv { transform: translateY(28px); }
 
   /* pressed state for toggle buttons and chips */
   .is-on { background: var(--cta-bg) !important; color: var(--cta-fg) !important; border-color: var(--cta-bg) !important; }
@@ -248,11 +245,15 @@
   :root[lang="gu"] .route text { letter-spacing: 0; text-transform: none; font-size: 14px; }
   .route .pulse { fill: none; stroke: var(--color-gold); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: ping 3.2s ease-out infinite; }
   .route .pulse.b { animation-delay: 1.6s; }
+  .route:not(.live) .pulse { animation-play-state: paused; }
   .route .dot { fill: var(--accent); }
   .route .pin { transform-box: fill-box; transform-origin: 50% 100%; transform: scale(.5); opacity: .35; transition: transform .7s cubic-bezier(.3, 1.6, .5, 1), opacity .5s; }
   .route .pin.on { transform: scale(1); opacity: 1; }
   .route .cone { opacity: .18; transition: opacity .5s; }
   [data-tone="night"] .route .cone { opacity: .85; }
+
+  /* sections far below the fold aren't laid out or painted until they come near the screen */
+  .defer-render { content-visibility: auto; contain-intrinsic-size: auto 1200px; }
 
   /* top bar scroll progress */
   .progress::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: calc(var(--p, 0) * 100%); background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light), #fff1cf); }
@@ -286,45 +287,20 @@
   .cur-ring.lab span { opacity: 1; }
   .cur-dot.hot { transform: scale(.5); }
 
-  /* intro */
-  .intro-bg {
-    background: radial-gradient(60% 50% at 50% 42%, rgba(220, 192, 138, .16), transparent 70%),
-      radial-gradient(120% 90% at 50% 40%, #1c4a33 0%, #0b2a1c 55%, #04130b 100%);
-    clip-path: inset(0 0 0 0); transition: clip-path 1.15s cubic-bezier(.77, 0, .18, 1);
-    animation: introFailsafe 0s 8s forwards;
-  }
-  .intro-bg.out { clip-path: inset(0 0 100% 0); }
-  .intro-bg.out .intro-content { transform: translateY(-80px); opacity: 0; }
-  .intro-content { transition: transform 1.15s cubic-bezier(.77, 0, .18, 1), opacity .7s; }
-  .intro-mark { animation: introMark 1.4s var(--ease-out-soft) .2s both; }
-  .intro-glow { background: radial-gradient(circle, rgba(220, 192, 138, .28), transparent 60%); animation: introGlow 2.4s ease-out .5s both; }
-  .intro-shine {
-    -webkit-mask: url(/img/icon_light.png) center / 100% 100% no-repeat; mask: url(/img/icon_light.png) center / 100% 100% no-repeat;
-    background: linear-gradient(105deg, transparent 38%, rgba(255, 232, 178, .95) 50%, transparent 62%); background-size: 300% 100%;
-    animation: introShine 1.5s ease-in-out 1.2s both;
-  }
-  .intro-word { animation: introWord 1.1s var(--ease-out-soft) 1s both; }
-  .intro-skip { animation: introWord .8s ease 1.6s both; }
 }
 
-@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
 @keyframes tileIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes drawerIn { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes drawerUp { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes ping { from { transform: scale(.6); opacity: 1; } to { transform: scale(2.6); opacity: 0; } }
 @keyframes cue { 0% { transform: translateY(-6px); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(46px); opacity: 0; } }
-@keyframes introFailsafe { to { visibility: hidden; } }
-@keyframes introMark { from { opacity: 0; transform: scale(1.1); clip-path: inset(100% 0 0 0); } to { opacity: 1; transform: none; clip-path: inset(0); } }
-@keyframes introGlow { 0% { opacity: 0; transform: scale(.6); } 40% { opacity: 1; } 100% { opacity: .55; transform: scale(1); } }
-@keyframes introShine { from { background-position: 110% 0; } to { background-position: -10% 0; } }
-@keyframes introWord { from { opacity: 0; transform: translateY(16px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rv { transition: none; }
   .rv.pre { transform: none; opacity: 1; }
-  .tile, .shimmer, .cue-line::after, .intro-bg, .intro-mark, .intro-word, .intro-shine, .intro-glow, .intro-skip { animation: none !important; }
+  .tile, .cue-line::after { animation: none !important; }
   .par img { transform: none; }
   html.th section:not(.lit) .frame .ph { clip-path: none; }
 }

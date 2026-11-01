@@ -1,6 +1,7 @@
 import { useLang } from '../lib/i18n';
 import { INSTAGRAM, MAPS, PHONE_DISPLAY, WHATSAPP } from '../lib/site';
 import { Icon } from './Icon';
+import Img from './Img';
 
 export default function Footer() {
   const { t } = useLang();
@@ -9,8 +10,8 @@ export default function Footer() {
     <footer className="relative z-1 mt-6 border-t border-line pt-14 pb-[140px]">
       <div className="mx-auto grid max-w-[1180px] gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <img className="tone-d h-[84px] w-auto" src="/img/word_dark.png" width="520" height="235" alt="Villa 48" />
-          <img className="tone-n h-[84px] w-auto" src="/img/word_light.png" width="520" height="235" alt="Villa 48" />
+          <Img name="word_dark" sizes="186px" className="tone-d h-[84px] w-auto" alt="Villa 48" />
+          <Img name="word_light" sizes="186px" className="tone-n h-[84px] w-auto" alt="Villa 48" />
         </div>
         <div>
           <span className="eyebrow">{t('ft_wa')}</span>

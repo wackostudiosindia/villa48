@@ -10,9 +10,9 @@ const DIST = path.resolve(__dirname, '../dist');
 const PORT = Number(process.env.PORT) || 3000;
 
 if (existsSync(DIST)) {
-  // Hashed build assets are cached for a year, images for a week; index.html always revalidates.
+  // Build assets and images have content hashes in their names, so they're cached for a year; index.html always revalidates.
   app.use('/assets', express.static(path.join(DIST, 'assets'), { immutable: true, maxAge: '1y' }));
-  app.use('/img', express.static(path.join(DIST, 'img'), { maxAge: '7d' }));
+  app.use('/img', express.static(path.join(DIST, 'img'), { immutable: true, maxAge: '1y' }));
   app.use(express.static(DIST, { index: false, maxAge: 0 }));
   app.use((req, res, next) => {
     if (req.method !== 'GET' || !req.accepts('html')) return next();

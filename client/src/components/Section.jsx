@@ -3,11 +3,11 @@ import { useInView } from '../hooks/useInView';
 import Reveal from './Reveal';
 
 /* A page section that gets the `lit` class when reached, which settles its photo frames and eyebrow lines. */
-export default function Section({ id, className = '', children }) {
+export default function Section({ id, className = '', lazy = false, children }) {
   const ref = useRef(null);
   const lit = useInView(ref, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
   return (
-    <section ref={ref} id={id} className={`relative z-1 mx-auto max-w-[1180px] ${lit ? 'lit' : ''} ${className}`}>
+    <section ref={ref} id={id} className={`relative z-1 mx-auto max-w-[1180px] ${lazy ? 'defer-render' : ''} ${lit ? 'lit' : ''} ${className}`}>
       {children}
     </section>
   );

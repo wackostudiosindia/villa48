@@ -1,0 +1,610 @@
+{
+  "bath1": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bath1-480.838d6d1b.webp",
+        480
+      ],
+      [
+        "/img/bath1-800.2705dfde.webp",
+        800
+      ],
+      [
+        "/img/bath1-1200.b3f7f5de.webp",
+        1200
+      ],
+      [
+        "/img/bath1-1600.917a9880.webp",
+        1600
+      ]
+    ]
+  },
+  "bath2": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bath2-480.fe500539.webp",
+        480
+      ],
+      [
+        "/img/bath2-800.45ad68d4.webp",
+        800
+      ],
+      [
+        "/img/bath2-1200.8429552a.webp",
+        1200
+      ],
+      [
+        "/img/bath2-1600.20b5e34c.webp",
+        1600
+      ]
+    ]
+  },
+  "bed1": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bed1-480.332234d8.webp",
+        480
+      ],
+      [
+        "/img/bed1-800.162b0a13.webp",
+        800
+      ],
+      [
+        "/img/bed1-1200.1db89cd1.webp",
+        1200
+      ],
+      [
+        "/img/bed1-1600.3ef13fc5.webp",
+        1600
+      ]
+    ]
+  },
+  "bed2": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bed2-480.748ccb94.webp",
+        480
+      ],
+      [
+        "/img/bed2-800.4deacdca.webp",
+        800
+      ],
+      [
+        "/img/bed2-1200.839addf0.webp",
+        1200
+      ],
+      [
+        "/img/bed2-1600.9899e686.webp",
+        1600
+      ]
+    ]
+  },
+  "bed3": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bed3-480.b1ed6f11.webp",
+        480
+      ],
+      [
+        "/img/bed3-800.c36a0033.webp",
+        800
+      ],
+      [
+        "/img/bed3-1200.cfc96a5c.webp",
+        1200
+      ],
+      [
+        "/img/bed3-1600.f7530632.webp",
+        1600
+      ]
+    ]
+  },
+  "bed6": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/bed6-480.c4fbac7d.webp",
+        480
+      ],
+      [
+        "/img/bed6-800.f0b43482.webp",
+        800
+      ],
+      [
+        "/img/bed6-1200.1e900e4a.webp",
+        1200
+      ],
+      [
+        "/img/bed6-1600.7883ff1e.webp",
+        1600
+      ]
+    ]
+  },
+  "dining": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/dining-480.2db586ac.webp",
+        480
+      ],
+      [
+        "/img/dining-800.d42f943f.webp",
+        800
+      ],
+      [
+        "/img/dining-1200.93d968bd.webp",
+        1200
+      ],
+      [
+        "/img/dining-1600.1094763b.webp",
+        1600
+      ]
+    ]
+  },
+  "entrance": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      [
+        "/img/entrance-480.77983fd0.webp",
+        480
+      ],
+      [
+        "/img/entrance-800.4b24fc82.webp",
+        800
+      ],
+      [
+        "/img/entrance-900.0a5fc253.webp",
+        900
+      ]
+    ]
+  },
+  "exterior": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/exterior-480.39cf8ced.webp",
+        480
+      ],
+      [
+        "/img/exterior-800.74a60512.webp",
+        800
+      ],
+      [
+        "/img/exterior-1200.f2e1ce31.webp",
+        1200
+      ],
+      [
+        "/img/exterior-1600.1f55648b.webp",
+        1600
+      ]
+    ]
+  },
+  "icon_dark": {
+    "width": 520,
+    "height": 685,
+    "variants": [
+      [
+        "/img/icon_dark-96.44abf1bd.webp",
+        96
+      ],
+      [
+        "/img/icon_dark-280.c65b11ce.webp",
+        280
+      ]
+    ]
+  },
+  "icon_light": {
+    "width": 520,
+    "height": 685,
+    "variants": [
+      [
+        "/img/icon_light-96.f9a5b226.webp",
+        96
+      ],
+      [
+        "/img/icon_light-280.c7c155ea.webp",
+        280
+      ]
+    ]
+  },
+  "kids2": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/kids2-480.701d95e3.webp",
+        480
+      ],
+      [
+        "/img/kids2-800.4c658d77.webp",
+        800
+      ],
+      [
+        "/img/kids2-1200.2839d695.webp",
+        1200
+      ],
+      [
+        "/img/kids2-1600.71805d53.webp",
+        1600
+      ]
+    ]
+  },
+  "kitchen2": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/kitchen2-480.82bd0787.webp",
+        480
+      ],
+      [
+        "/img/kitchen2-800.e40c337c.webp",
+        800
+      ],
+      [
+        "/img/kitchen2-1200.77cc178e.webp",
+        1200
+      ],
+      [
+        "/img/kitchen2-1600.0eed7003.webp",
+        1600
+      ]
+    ]
+  },
+  "living": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/living-480.a192e966.webp",
+        480
+      ],
+      [
+        "/img/living-800.8e0fab7f.webp",
+        800
+      ],
+      [
+        "/img/living-1200.5c10bf3c.webp",
+        1200
+      ],
+      [
+        "/img/living-1600.d506a2c3.webp",
+        1600
+      ]
+    ]
+  },
+  "living2": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/living2-480.f8dbfe9a.webp",
+        480
+      ],
+      [
+        "/img/living2-800.e4073106.webp",
+        800
+      ],
+      [
+        "/img/living2-1200.b3d85d8a.webp",
+        1200
+      ],
+      [
+        "/img/living2-1600.efec501d.webp",
+        1600
+      ]
+    ]
+  },
+  "pool": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/pool-480.e34d3d6d.webp",
+        480
+      ],
+      [
+        "/img/pool-800.b29ed48b.webp",
+        800
+      ],
+      [
+        "/img/pool-1200.a8605648.webp",
+        1200
+      ],
+      [
+        "/img/pool-1600.4aa21f8d.webp",
+        1600
+      ]
+    ]
+  },
+  "poollawn": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/poollawn-480.3f0d9bcb.webp",
+        480
+      ],
+      [
+        "/img/poollawn-800.6718d3bb.webp",
+        800
+      ],
+      [
+        "/img/poollawn-1200.b7a8336d.webp",
+        1200
+      ],
+      [
+        "/img/poollawn-1600.32ce9880.webp",
+        1600
+      ]
+    ]
+  },
+  "poolside": {
+    "width": 900,
+    "height": 1600,
+    "variants": [
+      [
+        "/img/poolside-480.1555f1d2.webp",
+        480
+      ],
+      [
+        "/img/poolside-800.ffff690f.webp",
+        800
+      ],
+      [
+        "/img/poolside-900.17338fd7.webp",
+        900
+      ]
+    ]
+  },
+  "stairs1": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/stairs1-480.62e9467b.webp",
+        480
+      ],
+      [
+        "/img/stairs1-800.366f6e66.webp",
+        800
+      ],
+      [
+        "/img/stairs1-1200.996b4ef3.webp",
+        1200
+      ],
+      [
+        "/img/stairs1-1600.e29e2714.webp",
+        1600
+      ]
+    ]
+  },
+  "swing": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/swing-480.245992ba.webp",
+        480
+      ],
+      [
+        "/img/swing-800.c97aa5e6.webp",
+        800
+      ],
+      [
+        "/img/swing-1200.f4714daf.webp",
+        1200
+      ],
+      [
+        "/img/swing-1600.c6ae1722.webp",
+        1600
+      ]
+    ]
+  },
+  "terrace": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/terrace-480.5a6d0a9a.webp",
+        480
+      ],
+      [
+        "/img/terrace-800.ab1a045f.webp",
+        800
+      ],
+      [
+        "/img/terrace-1200.4a5feed3.webp",
+        1200
+      ],
+      [
+        "/img/terrace-1600.27b323ad.webp",
+        1600
+      ]
+    ]
+  },
+  "theatre": {
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      [
+        "/img/theatre-480.0712a497.webp",
+        480
+      ],
+      [
+        "/img/theatre-800.12b7ffe9.webp",
+        800
+      ],
+      [
+        "/img/theatre-1200.3f212536.webp",
+        1200
+      ],
+      [
+        "/img/theatre-1600.6ef4b778.webp",
+        1600
+      ]
+    ]
+  },
+  "word_dark": {
+    "width": 520,
+    "height": 235,
+    "variants": [
+      [
+        "/img/word_dark-300.1b136ce4.webp",
+        300
+      ],
+      [
+        "/img/word_dark-520.9e38a1c4.webp",
+        520
+      ]
+    ]
+  },
+  "word_light": {
+    "width": 520,
+    "height": 235,
+    "variants": [
+      [
+        "/img/word_light-300.d790958b.webp",
+        300
+      ],
+      [
+        "/img/word_light-520.aba703aa.webp",
+        520
+      ]
+    ]
+  },
+  "exterior-hero": {
+    "width": 720,
+    "height": 900,
+    "variants": [
+      [
+        "/img/exterior-hero-400.8b20a58a.webp",
+        400
+      ],
+      [
+        "/img/exterior-hero-640.58b2eabd.webp",
+        640
+      ],
+      [
+        "/img/exterior-hero-720.dfd087f4.webp",
+        720
+      ]
+    ]
+  },
+  "poollawn-square": {
+    "width": 900,
+    "height": 900,
+    "variants": [
+      [
+        "/img/poollawn-square-400.85254b26.webp",
+        400
+      ],
+      [
+        "/img/poollawn-square-640.a6c3b060.webp",
+        640
+      ],
+      [
+        "/img/poollawn-square-900.5cad337b.webp",
+        900
+      ]
+    ]
+  },
+  "entrance-4x3": {
+    "width": 900,
+    "height": 675,
+    "variants": [
+      [
+        "/img/entrance-4x3-400.ea74d180.webp",
+        400
+      ],
+      [
+        "/img/entrance-4x3-640.98d13c7e.webp",
+        640
+      ],
+      [
+        "/img/entrance-4x3-900.c5d2c229.webp",
+        900
+      ]
+    ]
+  },
+  "pool-4x3": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      [
+        "/img/pool-4x3-400.fcf11c30.webp",
+        400
+      ],
+      [
+        "/img/pool-4x3-640.67f157b5.webp",
+        640
+      ],
+      [
+        "/img/pool-4x3-960.4e9e077b.webp",
+        960
+      ],
+      [
+        "/img/pool-4x3-1200.11dfe62a.webp",
+        1200
+      ]
+    ]
+  },
+  "swing-4x3": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      [
+        "/img/swing-4x3-400.8cc5271c.webp",
+        400
+      ],
+      [
+        "/img/swing-4x3-640.d19e81ec.webp",
+        640
+      ],
+      [
+        "/img/swing-4x3-960.b82a86fc.webp",
+        960
+      ],
+      [
+        "/img/swing-4x3-1200.ef712bfb.webp",
+        1200
+      ]
+    ]
+  },
+  "theatre-4x3": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      [
+        "/img/theatre-4x3-400.68a61af9.webp",
+        400
+      ],
+      [
+        "/img/theatre-4x3-640.0b366211.webp",
+        640
+      ],
+      [
+        "/img/theatre-4x3-960.c70decaa.webp",
+        960
+      ],
+      [
+        "/img/theatre-4x3-1200.f08c579e.webp",
+        1200
+      ]
+    ]
+  }
+}

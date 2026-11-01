@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLang } from '../lib/i18n';
 import { onTick } from '../lib/ticker';
 import { clamp, reduceMotion } from '../lib/motion';
+import { onLayout, pageTop } from '../lib/layout';
 import { INSTAGRAM, MAPS } from '../lib/site';
 import Section, { SectionHead } from './Section';
 import Reveal from './Reveal';
@@ -16,45 +17,67 @@ export default function Place() {
 
   useEffect(() => {
     const path = road.current;
-    const len = path.getTotalLength();
-    const ns = 'http://www.w3.org/2000/svg';
-    const trees = [];
-    treesG.current.textContent = '';
-    for (let i = 0; i < 16; i++) {
-      const tt = (i + 1) / 17 + ((i % 3) - 1) * 0.012;
-      const pt = path.getPointAtLength(tt * len);
-      const pt2 = path.getPointAtLength(Math.min(tt * len + 2, len));
-      const a = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) + Math.PI / 2;
-      const off = (30 + ((i * 7) % 16)) * (i % 2 ? 1 : -1);
-      const g = document.createElementNS(ns, 'g');
-      g.setAttribute('transform', `translate(${(pt.x + Math.cos(a) * off).toFixed(1)} ${(pt.y + Math.sin(a) * off).toFixed(1)})`);
-      const inner = document.createElementNS(ns, 'g');
-      inner.innerHTML = `<rect x="-1.5" y="-2" width="3" height="9" fill="var(--fg-soft)" opacity=".5"/><circle cx="0" cy="-9" r="${8 + (i % 3) * 2}" fill="var(--tree)"/>`;
-      Object.assign(inner.style, { transformBox: 'fill-box', transformOrigin: '50% 100%', transform: reduceMotion ? 'scale(1)' : 'scale(0)', transition: 'transform .5s cubic-bezier(.3,1.7,.5,1)' });
-      g.appendChild(inner);
-      treesG.current.appendChild(g);
-      trees.push({ t: tt, el: inner, on: false });
+    const svgEl = path.ownerSVGElement;
+    const box = svgEl.parentElement;
+    let stopTick = null, stopLayout = null, built = false;
+
+    // Everything here waits until the map is near the screen, so none of it costs anything at page load.
+    function build() {
+      built = true;
+      const len = path.getTotalLength();
+      const ns = 'http://www.w3.org/2000/svg';
+      const trees = [];
+      treesG.current.textContent = '';
+      for (let i = 0; i < 16; i++) {
+        const tt = (i + 1) / 17 + ((i % 3) - 1) * 0.012;
+        const pt = path.getPointAtLength(tt * len);
+        const pt2 = path.getPointAtLength(Math.min(tt * len + 2, len));
+        const a = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) + Math.PI / 2;
+        const off = (30 + ((i * 7) % 16)) * (i % 2 ? 1 : -1);
+        const g = document.createElementNS(ns, 'g');
+        g.setAttribute('transform', `translate(${(pt.x + Math.cos(a) * off).toFixed(1)} ${(pt.y + Math.sin(a) * off).toFixed(1)})`);
+        const inner = document.createElementNS(ns, 'g');
+        inner.innerHTML = `<rect x="-1.5" y="-2" width="3" height="9" fill="var(--fg-soft)" opacity=".5"/><circle cx="0" cy="-9" r="${8 + (i % 3) * 2}" fill="var(--tree)"/>`;
+        Object.assign(inner.style, { transformBox: 'fill-box', transformOrigin: '50% 100%', transform: reduceMotion ? 'scale(1)' : 'scale(0)', transition: 'transform .5s cubic-bezier(.3,1.7,.5,1)' });
+        g.appendChild(inner);
+        treesG.current.appendChild(g);
+        trees.push({ t: tt, el: inner, on: false });
+      }
+      trail.current.style.strokeDasharray = len;
+      let s = reduceMotion ? 1 : 0, goal = s, drawnS = -1, top = 0;
+      stopLayout = onLayout(() => { top = pageTop(box); });
+      stopTick = onTick({
+        read: () => { goal = reduceMotion ? 1 : clamp((innerHeight * 0.9 - (top - scrollY)) / (innerHeight * 0.6), 0, 1); },
+        write: () => {
+          s = reduceMotion ? 1 : s + (goal - s) * 0.12;
+          if (Math.abs(goal - s) < 0.001) s = goal;
+          if (s === drawnS) return;
+          drawnS = s;
+          const L = s * len;
+          const p = path.getPointAtLength(L), p2 = path.getPointAtLength(Math.min(L + 2, len)), p0 = path.getPointAtLength(Math.max(L - 2, 0));
+          const ang = (Math.atan2(p2.y - p0.y, p2.x - p0.x) * 180) / Math.PI;
+          car.current.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${ang.toFixed(1)})`);
+          trail.current.style.strokeDashoffset = (len * (1 - s)).toFixed(1);
+          mins.current.textContent = Math.round(35 * s);
+          pin.current.classList.toggle('on', s > 0.97);
+          if (!reduceMotion) trees.forEach((tr) => { const on = s >= tr.t; if (on !== tr.on) { tr.on = on; tr.el.style.transform = on ? 'scale(1)' : 'scale(0)'; } });
+        },
+      });
     }
-    trail.current.style.strokeDasharray = len;
-    let s = reduceMotion ? 1 : 0;
-    return onTick(() => {
-      const r = path.ownerSVGElement.parentElement.getBoundingClientRect();
-      const goal = reduceMotion ? 1 : clamp((innerHeight * 0.9 - r.top) / (innerHeight * 0.6), 0, 1);
-      s = reduceMotion ? 1 : s + (goal - s) * 0.12;
-      if (Math.abs(goal - s) < 0.001) s = goal;
-      const L = s * len;
-      const p = path.getPointAtLength(L), p2 = path.getPointAtLength(Math.min(L + 2, len)), p0 = path.getPointAtLength(Math.max(L - 2, 0));
-      const ang = (Math.atan2(p2.y - p0.y, p2.x - p0.x) * 180) / Math.PI;
-      car.current.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${ang.toFixed(1)})`);
-      trail.current.style.strokeDashoffset = (len * (1 - s)).toFixed(1);
-      mins.current.textContent = Math.round(35 * s);
-      pin.current.classList.toggle('on', s > 0.97);
-      if (!reduceMotion) trees.forEach((tr) => { const on = s >= tr.t; if (on !== tr.on) { tr.on = on; tr.el.style.transform = on ? 'scale(1)' : 'scale(0)'; } });
-    });
+
+    const io = new IntersectionObserver(
+      ([e]) => {
+        svgEl.classList.toggle('live', e.isIntersecting);
+        if (e.isIntersecting && !built) build();
+      },
+      { rootMargin: '600px 0px' },
+    );
+    io.observe(svgEl);
+    return () => { io.disconnect(); stopTick?.(); stopLayout?.(); };
   }, []);
 
   return (
-    <Section id="place" className="grid gap-8 py-[clamp(48px,9vh,100px)]">
+    <Section id="place" lazy className="grid gap-8 py-[clamp(48px,9vh,100px)]">
       <SectionHead eyebrow={t('p_e')} title={t('p_h')} />
       <Reveal className="panel grid items-center gap-7 overflow-hidden p-[clamp(18px,3vw,30px)] min-[900px]:grid-cols-[.62fr_1.38fr] min-[900px]:gap-9">
         <div className="grid min-w-0 gap-[18px]">

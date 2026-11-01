@@ -10,7 +10,7 @@ export default function StickyBook() {
   const [atTop, setAtTop] = useState(true);
   const [atBooking, setAtBooking] = useState(false);
 
-  useEffect(() => onTick(() => setAtTop(scrollY < innerHeight * 0.55)), []);
+  useEffect(() => { let top = true; return onTick({ read: () => { top = scrollY < innerHeight * 0.55; }, write: () => setAtTop(top) }); }, []);
   useEffect(() => {
     const el = document.getElementById('booking');
     if (!el || !('IntersectionObserver' in window)) return;

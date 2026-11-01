@@ -5,7 +5,7 @@ import Reveal from './Reveal';
 export default function HowItWorks() {
   const { t } = useLang();
   return (
-    <Section id="how" className="grid gap-8 py-[clamp(48px,9vh,100px)]">
+    <Section id="how" lazy className="grid gap-8 py-[clamp(48px,9vh,100px)]">
       <SectionHead eyebrow={t('h_e')} title={t('h_h')} />
       <ol className="steps grid list-none grid-cols-[repeat(auto-fit,minmax(min(100%,230px),1fr))] gap-5">
         {[1, 2, 3, 4].map((n, i) => (

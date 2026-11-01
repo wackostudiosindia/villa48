@@ -1,71 +1,53 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLang } from '../lib/i18n';
 import { reduceMotion } from '../lib/motion';
 import { layoutChanged } from '../lib/skyStore';
 
 /*
-  Logo intro: the V48 mark rises in with a gold glow and a metallic shine, the wordmark fades up,
-  then the screen lifts like a curtain. Tap, a key, a scroll or "Skip" ends it early.
+  Controls the logo intro. The intro itself is plain HTML + inline CSS in index.html, so it paints
+  immediately, before this app has loaded. Here we time it, let visitors skip it, and lift it away:
+  the V48 mark rises in with a gold glow and a shine, the wordmark fades up, then the screen lifts like a curtain.
 */
 export default function Intro() {
   const { t } = useLang();
-  const [stage, setStage] = useState('show'); // show -> out -> gone
-
-  const finish = useCallback(() => setStage((s) => (s === 'show' ? 'out' : s)), []);
 
   useEffect(() => {
-    document.documentElement.classList.add('intro');
-    const start = Date.now();
+    const el = document.getElementById('intro-skip');
+    if (el) el.textContent = t('skip');
+  }, [t]);
+
+  useEffect(() => {
+    const intro = document.getElementById('intro');
+    const root = document.documentElement;
+    if (!intro) { root.classList.remove('intro'); return; }
+    let done = false;
+    const start = 0; // the intro has been on screen since the page started loading
     const minTime = reduceMotion ? 900 : 3300;
-    let timer;
-    const go = () => { timer = setTimeout(finish, Math.max(0, minTime - (Date.now() - start))); };
+    const timers = [];
+    const finish = () => {
+      if (done) return;
+      done = true;
+      intro.classList.add('out');
+      root.classList.remove('intro');
+      timers.push(setTimeout(() => { intro.remove(); layoutChanged(); }, 1250));
+    };
+    const go = () => timers.push(setTimeout(finish, Math.max(0, minTime - (performance.now() - start))));
     if (document.readyState === 'complete') go();
     else addEventListener('load', go, { once: true });
-    const failsafe = setTimeout(finish, 6000);
+    timers.push(setTimeout(finish, 6000));
     const onKey = (e) => ['Escape', 'Enter', ' '].includes(e.key) && finish();
-    const onWheel = () => Date.now() - start > 1200 && finish();
+    const onWheel = (e) => { if (done) return; e.preventDefault(); if (performance.now() - start > 1200) finish(); };
+    intro.addEventListener('click', finish);
     addEventListener('keydown', onKey);
-    addEventListener('wheel', onWheel, { passive: true });
+    addEventListener('wheel', onWheel, { passive: false });
     return () => {
-      clearTimeout(timer); clearTimeout(failsafe);
+      timers.forEach(clearTimeout);
+      intro.removeEventListener('click', finish);
       removeEventListener('load', go);
       removeEventListener('keydown', onKey);
       removeEventListener('wheel', onWheel);
     };
-  }, [finish]);
+  }, []);
 
-  useEffect(() => {
-    if (stage !== 'out') return;
-    document.documentElement.classList.remove('intro');
-    const id = setTimeout(() => { setStage('gone'); layoutChanged(); }, 1300);
-    return () => clearTimeout(id);
-  }, [stage]);
-
-  if (stage === 'gone') return null;
-
-  return (
-    <div
-      aria-hidden="true"
-      onClick={finish}
-      className={`intro-bg fixed inset-0 z-[100] grid place-items-center text-cream ${stage === 'out' ? 'out' : ''}`}
-    >
-      <div className="intro-content grid justify-items-center gap-[26px]">
-        <div className="intro-mark relative aspect-[520/685] w-[min(30vw,132px)]">
-          <i className="intro-glow pointer-events-none absolute -inset-[60%]" />
-          <img className="relative block h-auto w-full" src="/img/icon_light.png" width="520" height="685" alt="" />
-          <i className="intro-shine absolute inset-0" />
-        </div>
-        <img className="intro-word h-auto w-[min(62vw,250px)]" src="/img/word_light.png" width="520" height="235" alt="" />
-      </div>
-      <button
-        type="button"
-        tabIndex={-1}
-        onClick={finish}
-        className="intro-skip absolute left-1/2 -translate-x-1/2 bg-transparent px-[18px] py-3.5 text-[10px] leading-none font-semibold tracking-[.24em] text-cream/60 uppercase hover:text-cream"
-        style={{ bottom: 'calc(22px + env(safe-area-inset-bottom,0px))' }}
-      >
-        {t('skip')}
-      </button>
-    </div>
-  );
+  return null;
 }

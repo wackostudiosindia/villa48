@@ -4,6 +4,8 @@ import { useBooking } from '../lib/booking';
 import { skyStore } from '../lib/skyStore';
 import { onTick } from '../lib/ticker';
 import { clamp } from '../lib/motion';
+import { onLayout } from '../lib/layout';
+import Img from './Img';
 
 const LANGS = [
   ['en', 'EN'],
@@ -18,14 +20,17 @@ export default function Header() {
   const barRef = useRef(null);
 
   // scroll progress line under the bar
-  useEffect(
-    () =>
-      onTick(() => {
-        const h = document.documentElement.scrollHeight - innerHeight;
-        barRef.current?.style.setProperty('--p', h > 0 ? clamp(scrollY / h, 0, 1).toFixed(4) : 0);
-      }),
-    [],
-  );
+  useEffect(() => {
+    let p = '0', last = '', range = 1;
+    const stopLayout = onLayout(() => { range = document.documentElement.scrollHeight - innerHeight; });
+    const stopTick = onTick({
+      read: () => { p = range > 0 ? clamp(scrollY / range, 0, 1).toFixed(4) : '0'; },
+      write: () => {
+        if (p !== last) { last = p; barRef.current?.style.setProperty('--p', p); }
+      },
+    });
+    return () => { stopLayout(); stopTick(); };
+  }, []);
 
   return (
     <header
@@ -37,8 +42,8 @@ export default function Header() {
       }}
     >
       <a href="#top" aria-label="Villa 48" className="block leading-none">
-        <img className="tone-d h-[38px] w-auto sm:h-11" src="/img/icon_dark.png" width="520" height="685" alt="Villa 48" />
-        <img className="tone-n h-[38px] w-auto sm:h-11" src="/img/icon_light.png" width="520" height="685" alt="Villa 48" />
+        <Img name="icon_dark" sizes="34px" eager className="tone-d h-[38px] w-auto sm:h-11" alt="Villa 48" />
+        <Img name="icon_light" sizes="34px" className="tone-n h-[38px] w-auto sm:h-11" alt="Villa 48" />
       </a>
       <div className="flex min-w-0 items-center gap-2 sm:gap-3">
         <div className="hidden items-center gap-2 text-[11px] leading-none font-medium tracking-[.14em] whitespace-nowrap uppercase sm:flex" aria-hidden="true">
