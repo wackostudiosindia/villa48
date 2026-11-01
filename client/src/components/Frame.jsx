@@ -6,7 +6,7 @@ import { onLayout, pageTop } from '../lib/layout';
 import Img from './Img';
 
 /* A photo in a thin offset gold frame with the roof chevron, as in the logo. Optional gentle parallax. */
-export default function Frame({ name, alt, sizes = '(min-width: 860px) 600px, 100vw', ratio = 'aspect-[4/3]', objectPosition, caption, parallax = true, eager = false, className = '', children }) {
+export default function Frame({ name, alt, sizes = '(min-width: 860px) 600px, 100vw', ratio = 'aspect-[4/3]', objectPosition, caption, parallax = true, eager = false, priority = false, className = '', children }) {
   const phRef = useRef(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function Frame({ name, alt, sizes = '(min-width: 860px) 600px, 10
     <figure className={`frame ${className}`}>
       <Icon name="chv" className="chev" />
       <div ref={phRef} className={`ph ${ratio} ${parallax ? 'par' : ''}`}>
-        <Img name={name} alt={alt} sizes={sizes} eager={eager} style={objectPosition ? { objectPosition } : undefined} />
+        <Img name={name} alt={alt} sizes={sizes} eager={eager} priority={priority} style={objectPosition ? { objectPosition } : undefined} />
       </div>
       {caption && <figcaption>{caption}</figcaption>}
       {children}

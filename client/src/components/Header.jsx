@@ -16,7 +16,7 @@ const LANGS = [
 export default function Header() {
   const { t, lang, setLang } = useLang();
   const { drawerOpen, openDrawer, closeDrawer } = useBooking();
-  const { clock, phase } = useSyncExternalStore(skyStore.subscribe, skyStore.get);
+  const { clock, phase } = useSyncExternalStore(skyStore.subscribe, skyStore.get, skyStore.get);
   const barRef = useRef(null);
 
   // scroll progress line under the bar
@@ -35,7 +35,7 @@ export default function Header() {
   return (
     <header
       ref={barRef}
-      className="progress fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-3 bg-bar backdrop-blur-[14px] transition-colors duration-500"
+      className="progress fixed inset-x-0 top-0 z-30 flex items-center justify-between gap-3 bg-bar transition-colors duration-500 md:backdrop-blur-[14px]"
       style={{
         padding:
           'calc(8px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))',

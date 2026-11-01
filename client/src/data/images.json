@@ -2,21 +2,39 @@
   "bath1": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bath1-480.838d6d1b.webp",
+        "/img/bath1-480.fc639256.webp",
         480
       ],
       [
-        "/img/bath1-800.2705dfde.webp",
-        800
+        "/img/bath1-720.575fa3c6.webp",
+        720
       ],
       [
-        "/img/bath1-1200.b3f7f5de.webp",
-        1200
+        "/img/bath1-1080.09a0d791.webp",
+        1080
       ],
       [
-        "/img/bath1-1600.917a9880.webp",
+        "/img/bath1-1600.e62f5811.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bath1-480.8e6ff73d.avif",
+        480
+      ],
+      [
+        "/img/bath1-720.97bee40a.avif",
+        720
+      ],
+      [
+        "/img/bath1-1080.b7ff8024.avif",
+        1080
+      ],
+      [
+        "/img/bath1-1600.e12eb4cc.avif",
         1600
       ]
     ]
@@ -24,21 +42,39 @@
   "bath2": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bath2-480.fe500539.webp",
+        "/img/bath2-480.7d551183.webp",
         480
       ],
       [
-        "/img/bath2-800.45ad68d4.webp",
-        800
+        "/img/bath2-720.0f1cef17.webp",
+        720
       ],
       [
-        "/img/bath2-1200.8429552a.webp",
-        1200
+        "/img/bath2-1080.0ca6f91f.webp",
+        1080
       ],
       [
-        "/img/bath2-1600.20b5e34c.webp",
+        "/img/bath2-1600.fb557896.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bath2-480.5e423569.avif",
+        480
+      ],
+      [
+        "/img/bath2-720.acdbbd1d.avif",
+        720
+      ],
+      [
+        "/img/bath2-1080.84703494.avif",
+        1080
+      ],
+      [
+        "/img/bath2-1600.fc2451ba.avif",
         1600
       ]
     ]
@@ -46,21 +82,39 @@
   "bed1": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bed1-480.332234d8.webp",
+        "/img/bed1-480.ce6335da.webp",
         480
       ],
       [
-        "/img/bed1-800.162b0a13.webp",
-        800
+        "/img/bed1-720.d169d309.webp",
+        720
       ],
       [
-        "/img/bed1-1200.1db89cd1.webp",
-        1200
+        "/img/bed1-1080.d0f48012.webp",
+        1080
       ],
       [
-        "/img/bed1-1600.3ef13fc5.webp",
+        "/img/bed1-1600.b76de9a1.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bed1-480.baee10c9.avif",
+        480
+      ],
+      [
+        "/img/bed1-720.c9e846ee.avif",
+        720
+      ],
+      [
+        "/img/bed1-1080.21fffbb9.avif",
+        1080
+      ],
+      [
+        "/img/bed1-1600.5166be33.avif",
         1600
       ]
     ]
@@ -68,21 +122,39 @@
   "bed2": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bed2-480.748ccb94.webp",
+        "/img/bed2-480.b63e3419.webp",
         480
       ],
       [
-        "/img/bed2-800.4deacdca.webp",
-        800
+        "/img/bed2-720.d867dd93.webp",
+        720
       ],
       [
-        "/img/bed2-1200.839addf0.webp",
-        1200
+        "/img/bed2-1080.60a46d5c.webp",
+        1080
       ],
       [
-        "/img/bed2-1600.9899e686.webp",
+        "/img/bed2-1600.3f3452b0.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bed2-480.9669f316.avif",
+        480
+      ],
+      [
+        "/img/bed2-720.3167dd54.avif",
+        720
+      ],
+      [
+        "/img/bed2-1080.c5bca767.avif",
+        1080
+      ],
+      [
+        "/img/bed2-1600.35a91295.avif",
         1600
       ]
     ]
@@ -90,21 +162,39 @@
   "bed3": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bed3-480.b1ed6f11.webp",
+        "/img/bed3-480.51f8eeee.webp",
         480
       ],
       [
-        "/img/bed3-800.c36a0033.webp",
-        800
+        "/img/bed3-720.7b8c0cb4.webp",
+        720
       ],
       [
-        "/img/bed3-1200.cfc96a5c.webp",
-        1200
+        "/img/bed3-1080.bf6a3232.webp",
+        1080
       ],
       [
-        "/img/bed3-1600.f7530632.webp",
+        "/img/bed3-1600.ca25401f.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bed3-480.5ed7894a.avif",
+        480
+      ],
+      [
+        "/img/bed3-720.3a505354.avif",
+        720
+      ],
+      [
+        "/img/bed3-1080.89017d0c.avif",
+        1080
+      ],
+      [
+        "/img/bed3-1600.f824500a.avif",
         1600
       ]
     ]
@@ -112,21 +202,39 @@
   "bed6": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/bed6-480.c4fbac7d.webp",
+        "/img/bed6-480.3635b73b.webp",
         480
       ],
       [
-        "/img/bed6-800.f0b43482.webp",
-        800
+        "/img/bed6-720.eb48ce2c.webp",
+        720
       ],
       [
-        "/img/bed6-1200.1e900e4a.webp",
-        1200
+        "/img/bed6-1080.517d1bdc.webp",
+        1080
       ],
       [
-        "/img/bed6-1600.7883ff1e.webp",
+        "/img/bed6-1600.ea448116.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/bed6-480.5b969394.avif",
+        480
+      ],
+      [
+        "/img/bed6-720.eb1b5ac2.avif",
+        720
+      ],
+      [
+        "/img/bed6-1080.df2f0357.avif",
+        1080
+      ],
+      [
+        "/img/bed6-1600.85f4c59b.avif",
         1600
       ]
     ]
@@ -134,21 +242,39 @@
   "dining": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/dining-480.2db586ac.webp",
+        "/img/dining-480.9f52077a.webp",
         480
       ],
       [
-        "/img/dining-800.d42f943f.webp",
-        800
+        "/img/dining-720.e720868b.webp",
+        720
       ],
       [
-        "/img/dining-1200.93d968bd.webp",
-        1200
+        "/img/dining-1080.0ccc2ad5.webp",
+        1080
       ],
       [
-        "/img/dining-1600.1094763b.webp",
+        "/img/dining-1600.19cd7eba.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/dining-480.2cfb71f1.avif",
+        480
+      ],
+      [
+        "/img/dining-720.19baa485.avif",
+        720
+      ],
+      [
+        "/img/dining-1080.2e3d0e15.avif",
+        1080
+      ],
+      [
+        "/img/dining-1600.97afaaa7.avif",
         1600
       ]
     ]
@@ -156,17 +282,31 @@
   "entrance": {
     "width": 900,
     "height": 1600,
-    "variants": [
+    "webp": [
       [
-        "/img/entrance-480.77983fd0.webp",
+        "/img/entrance-480.e94b9bcd.webp",
         480
       ],
       [
-        "/img/entrance-800.4b24fc82.webp",
-        800
+        "/img/entrance-720.21896596.webp",
+        720
       ],
       [
-        "/img/entrance-900.0a5fc253.webp",
+        "/img/entrance-900.22c7677f.webp",
+        900
+      ]
+    ],
+    "avif": [
+      [
+        "/img/entrance-480.921beae2.avif",
+        480
+      ],
+      [
+        "/img/entrance-720.8f255864.avif",
+        720
+      ],
+      [
+        "/img/entrance-900.72ce1593.avif",
         900
       ]
     ]
@@ -174,21 +314,39 @@
   "exterior": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/exterior-480.39cf8ced.webp",
+        "/img/exterior-480.29c52ce2.webp",
         480
       ],
       [
-        "/img/exterior-800.74a60512.webp",
-        800
+        "/img/exterior-720.453b5747.webp",
+        720
       ],
       [
-        "/img/exterior-1200.f2e1ce31.webp",
-        1200
+        "/img/exterior-1080.2a12349c.webp",
+        1080
       ],
       [
-        "/img/exterior-1600.1f55648b.webp",
+        "/img/exterior-1600.9fb4252a.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/exterior-480.96f49f4e.avif",
+        480
+      ],
+      [
+        "/img/exterior-720.b0ad4de7.avif",
+        720
+      ],
+      [
+        "/img/exterior-1080.b45b4597.avif",
+        1080
+      ],
+      [
+        "/img/exterior-1600.13eaf6d8.avif",
         1600
       ]
     ]
@@ -196,7 +354,7 @@
   "icon_dark": {
     "width": 520,
     "height": 685,
-    "variants": [
+    "webp": [
       [
         "/img/icon_dark-96.44abf1bd.webp",
         96
@@ -210,7 +368,7 @@
   "icon_light": {
     "width": 520,
     "height": 685,
-    "variants": [
+    "webp": [
       [
         "/img/icon_light-96.f9a5b226.webp",
         96
@@ -224,21 +382,39 @@
   "kids2": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/kids2-480.701d95e3.webp",
+        "/img/kids2-480.a7671a54.webp",
         480
       ],
       [
-        "/img/kids2-800.4c658d77.webp",
-        800
+        "/img/kids2-720.93527d63.webp",
+        720
       ],
       [
-        "/img/kids2-1200.2839d695.webp",
-        1200
+        "/img/kids2-1080.208db4a0.webp",
+        1080
       ],
       [
-        "/img/kids2-1600.71805d53.webp",
+        "/img/kids2-1600.d18ba69c.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/kids2-480.45857669.avif",
+        480
+      ],
+      [
+        "/img/kids2-720.da0d41e6.avif",
+        720
+      ],
+      [
+        "/img/kids2-1080.906f794f.avif",
+        1080
+      ],
+      [
+        "/img/kids2-1600.bdbc05b1.avif",
         1600
       ]
     ]
@@ -246,21 +422,39 @@
   "kitchen2": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/kitchen2-480.82bd0787.webp",
+        "/img/kitchen2-480.d015f6ef.webp",
         480
       ],
       [
-        "/img/kitchen2-800.e40c337c.webp",
-        800
+        "/img/kitchen2-720.ed16121d.webp",
+        720
       ],
       [
-        "/img/kitchen2-1200.77cc178e.webp",
-        1200
+        "/img/kitchen2-1080.87ea9a0b.webp",
+        1080
       ],
       [
-        "/img/kitchen2-1600.0eed7003.webp",
+        "/img/kitchen2-1600.0741b16f.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/kitchen2-480.5951c48a.avif",
+        480
+      ],
+      [
+        "/img/kitchen2-720.762f9878.avif",
+        720
+      ],
+      [
+        "/img/kitchen2-1080.faf5f2a5.avif",
+        1080
+      ],
+      [
+        "/img/kitchen2-1600.d916954c.avif",
         1600
       ]
     ]
@@ -268,21 +462,39 @@
   "living": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/living-480.a192e966.webp",
+        "/img/living-480.ba6d5bd1.webp",
         480
       ],
       [
-        "/img/living-800.8e0fab7f.webp",
-        800
+        "/img/living-720.29cb7cd6.webp",
+        720
       ],
       [
-        "/img/living-1200.5c10bf3c.webp",
-        1200
+        "/img/living-1080.08d99594.webp",
+        1080
       ],
       [
-        "/img/living-1600.d506a2c3.webp",
+        "/img/living-1600.71b5e089.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/living-480.2d77ba50.avif",
+        480
+      ],
+      [
+        "/img/living-720.fd75957b.avif",
+        720
+      ],
+      [
+        "/img/living-1080.54b2883a.avif",
+        1080
+      ],
+      [
+        "/img/living-1600.df125685.avif",
         1600
       ]
     ]
@@ -290,21 +502,39 @@
   "living2": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/living2-480.f8dbfe9a.webp",
+        "/img/living2-480.10e5f508.webp",
         480
       ],
       [
-        "/img/living2-800.e4073106.webp",
-        800
+        "/img/living2-720.fa1344bb.webp",
+        720
       ],
       [
-        "/img/living2-1200.b3d85d8a.webp",
-        1200
+        "/img/living2-1080.f2c753ea.webp",
+        1080
       ],
       [
-        "/img/living2-1600.efec501d.webp",
+        "/img/living2-1600.4721e5e9.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/living2-480.8d6322a6.avif",
+        480
+      ],
+      [
+        "/img/living2-720.e5e9d381.avif",
+        720
+      ],
+      [
+        "/img/living2-1080.bfcabe61.avif",
+        1080
+      ],
+      [
+        "/img/living2-1600.307e3f4a.avif",
         1600
       ]
     ]
@@ -312,21 +542,39 @@
   "pool": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/pool-480.e34d3d6d.webp",
+        "/img/pool-480.0760cda3.webp",
         480
       ],
       [
-        "/img/pool-800.b29ed48b.webp",
-        800
+        "/img/pool-720.571a8e54.webp",
+        720
       ],
       [
-        "/img/pool-1200.a8605648.webp",
-        1200
+        "/img/pool-1080.1ce80c98.webp",
+        1080
       ],
       [
-        "/img/pool-1600.4aa21f8d.webp",
+        "/img/pool-1600.a74959c4.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/pool-480.14b9370b.avif",
+        480
+      ],
+      [
+        "/img/pool-720.b2ccef30.avif",
+        720
+      ],
+      [
+        "/img/pool-1080.1442a789.avif",
+        1080
+      ],
+      [
+        "/img/pool-1600.18274e04.avif",
         1600
       ]
     ]
@@ -334,21 +582,39 @@
   "poollawn": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/poollawn-480.3f0d9bcb.webp",
+        "/img/poollawn-480.6e19724d.webp",
         480
       ],
       [
-        "/img/poollawn-800.6718d3bb.webp",
-        800
+        "/img/poollawn-720.c5e71ded.webp",
+        720
       ],
       [
-        "/img/poollawn-1200.b7a8336d.webp",
-        1200
+        "/img/poollawn-1080.74b261da.webp",
+        1080
       ],
       [
-        "/img/poollawn-1600.32ce9880.webp",
+        "/img/poollawn-1600.3196098a.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/poollawn-480.ab5f492b.avif",
+        480
+      ],
+      [
+        "/img/poollawn-720.fbbdde7c.avif",
+        720
+      ],
+      [
+        "/img/poollawn-1080.9420ad1f.avif",
+        1080
+      ],
+      [
+        "/img/poollawn-1600.ed7b031d.avif",
         1600
       ]
     ]
@@ -356,17 +622,31 @@
   "poolside": {
     "width": 900,
     "height": 1600,
-    "variants": [
+    "webp": [
       [
-        "/img/poolside-480.1555f1d2.webp",
+        "/img/poolside-480.e23a0f38.webp",
         480
       ],
       [
-        "/img/poolside-800.ffff690f.webp",
-        800
+        "/img/poolside-720.df175b28.webp",
+        720
       ],
       [
-        "/img/poolside-900.17338fd7.webp",
+        "/img/poolside-900.b7c89607.webp",
+        900
+      ]
+    ],
+    "avif": [
+      [
+        "/img/poolside-480.4adc7d75.avif",
+        480
+      ],
+      [
+        "/img/poolside-720.3e954be6.avif",
+        720
+      ],
+      [
+        "/img/poolside-900.e92980cd.avif",
         900
       ]
     ]
@@ -374,21 +654,39 @@
   "stairs1": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/stairs1-480.62e9467b.webp",
+        "/img/stairs1-480.43f51e62.webp",
         480
       ],
       [
-        "/img/stairs1-800.366f6e66.webp",
-        800
+        "/img/stairs1-720.2a577625.webp",
+        720
       ],
       [
-        "/img/stairs1-1200.996b4ef3.webp",
-        1200
+        "/img/stairs1-1080.03da271c.webp",
+        1080
       ],
       [
-        "/img/stairs1-1600.e29e2714.webp",
+        "/img/stairs1-1600.bb7e809d.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/stairs1-480.2612f0e3.avif",
+        480
+      ],
+      [
+        "/img/stairs1-720.11b07e3b.avif",
+        720
+      ],
+      [
+        "/img/stairs1-1080.da3fd053.avif",
+        1080
+      ],
+      [
+        "/img/stairs1-1600.6fc52ce1.avif",
         1600
       ]
     ]
@@ -396,21 +694,39 @@
   "swing": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/swing-480.245992ba.webp",
+        "/img/swing-480.a43ae4df.webp",
         480
       ],
       [
-        "/img/swing-800.c97aa5e6.webp",
-        800
+        "/img/swing-720.9e0e6639.webp",
+        720
       ],
       [
-        "/img/swing-1200.f4714daf.webp",
-        1200
+        "/img/swing-1080.12e060fd.webp",
+        1080
       ],
       [
-        "/img/swing-1600.c6ae1722.webp",
+        "/img/swing-1600.06e611f6.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/swing-480.1355549e.avif",
+        480
+      ],
+      [
+        "/img/swing-720.30240b0c.avif",
+        720
+      ],
+      [
+        "/img/swing-1080.9f731a14.avif",
+        1080
+      ],
+      [
+        "/img/swing-1600.4c76531d.avif",
         1600
       ]
     ]
@@ -418,21 +734,39 @@
   "terrace": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/terrace-480.5a6d0a9a.webp",
+        "/img/terrace-480.692d0094.webp",
         480
       ],
       [
-        "/img/terrace-800.ab1a045f.webp",
-        800
+        "/img/terrace-720.dd5b77e2.webp",
+        720
       ],
       [
-        "/img/terrace-1200.4a5feed3.webp",
-        1200
+        "/img/terrace-1080.cb48da8a.webp",
+        1080
       ],
       [
-        "/img/terrace-1600.27b323ad.webp",
+        "/img/terrace-1600.a448582b.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/terrace-480.0d3b99d2.avif",
+        480
+      ],
+      [
+        "/img/terrace-720.10509e2e.avif",
+        720
+      ],
+      [
+        "/img/terrace-1080.73c06f8d.avif",
+        1080
+      ],
+      [
+        "/img/terrace-1600.8188de6c.avif",
         1600
       ]
     ]
@@ -440,21 +774,39 @@
   "theatre": {
     "width": 1600,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/theatre-480.0712a497.webp",
+        "/img/theatre-480.d5a56c3e.webp",
         480
       ],
       [
-        "/img/theatre-800.12b7ffe9.webp",
-        800
+        "/img/theatre-720.8ea75054.webp",
+        720
       ],
       [
-        "/img/theatre-1200.3f212536.webp",
-        1200
+        "/img/theatre-1080.7ce9971f.webp",
+        1080
       ],
       [
-        "/img/theatre-1600.6ef4b778.webp",
+        "/img/theatre-1600.08e8a7f4.webp",
+        1600
+      ]
+    ],
+    "avif": [
+      [
+        "/img/theatre-480.f415359b.avif",
+        480
+      ],
+      [
+        "/img/theatre-720.442ab4f3.avif",
+        720
+      ],
+      [
+        "/img/theatre-1080.f21171b3.avif",
+        1080
+      ],
+      [
+        "/img/theatre-1600.2b5fd76b.avif",
         1600
       ]
     ]
@@ -462,7 +814,7 @@
   "word_dark": {
     "width": 520,
     "height": 235,
-    "variants": [
+    "webp": [
       [
         "/img/word_dark-300.1b136ce4.webp",
         300
@@ -476,7 +828,7 @@
   "word_light": {
     "width": 520,
     "height": 235,
-    "variants": [
+    "webp": [
       [
         "/img/word_light-300.d790958b.webp",
         300
@@ -490,17 +842,31 @@
   "exterior-hero": {
     "width": 720,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/exterior-hero-400.8b20a58a.webp",
+        "/img/exterior-hero-400.e8f7d1ff.webp",
         400
       ],
       [
-        "/img/exterior-hero-640.58b2eabd.webp",
-        640
+        "/img/exterior-hero-560.cc70523e.webp",
+        560
       ],
       [
-        "/img/exterior-hero-720.dfd087f4.webp",
+        "/img/exterior-hero-720.6ff3bdc2.webp",
+        720
+      ]
+    ],
+    "avif": [
+      [
+        "/img/exterior-hero-400.f7fe1c63.avif",
+        400
+      ],
+      [
+        "/img/exterior-hero-560.603221de.avif",
+        560
+      ],
+      [
+        "/img/exterior-hero-720.d59853cd.avif",
         720
       ]
     ]
@@ -508,17 +874,39 @@
   "poollawn-square": {
     "width": 900,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/poollawn-square-400.85254b26.webp",
+        "/img/poollawn-square-400.c6b1ac0a.webp",
         400
       ],
       [
-        "/img/poollawn-square-640.a6c3b060.webp",
-        640
+        "/img/poollawn-square-560.3d2855a8.webp",
+        560
       ],
       [
-        "/img/poollawn-square-900.5cad337b.webp",
+        "/img/poollawn-square-720.9289b2b2.webp",
+        720
+      ],
+      [
+        "/img/poollawn-square-900.e13710f6.webp",
+        900
+      ]
+    ],
+    "avif": [
+      [
+        "/img/poollawn-square-400.fb68bb60.avif",
+        400
+      ],
+      [
+        "/img/poollawn-square-560.a8fffea4.avif",
+        560
+      ],
+      [
+        "/img/poollawn-square-720.fbfb7654.avif",
+        720
+      ],
+      [
+        "/img/poollawn-square-900.51aa9613.avif",
         900
       ]
     ]
@@ -526,17 +914,39 @@
   "entrance-4x3": {
     "width": 900,
     "height": 675,
-    "variants": [
+    "webp": [
       [
-        "/img/entrance-4x3-400.ea74d180.webp",
+        "/img/entrance-4x3-400.9e434379.webp",
         400
       ],
       [
-        "/img/entrance-4x3-640.98d13c7e.webp",
-        640
+        "/img/entrance-4x3-560.eed1a278.webp",
+        560
       ],
       [
-        "/img/entrance-4x3-900.c5d2c229.webp",
+        "/img/entrance-4x3-720.839ea633.webp",
+        720
+      ],
+      [
+        "/img/entrance-4x3-900.febe41a1.webp",
+        900
+      ]
+    ],
+    "avif": [
+      [
+        "/img/entrance-4x3-400.24d964e7.avif",
+        400
+      ],
+      [
+        "/img/entrance-4x3-560.6d6b1de7.avif",
+        560
+      ],
+      [
+        "/img/entrance-4x3-720.af53c003.avif",
+        720
+      ],
+      [
+        "/img/entrance-4x3-900.bd245a5b.avif",
         900
       ]
     ]
@@ -544,21 +954,47 @@
   "pool-4x3": {
     "width": 1200,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/pool-4x3-400.fcf11c30.webp",
+        "/img/pool-4x3-400.76e54732.webp",
         400
       ],
       [
-        "/img/pool-4x3-640.67f157b5.webp",
-        640
+        "/img/pool-4x3-560.b34e8732.webp",
+        560
       ],
       [
-        "/img/pool-4x3-960.4e9e077b.webp",
+        "/img/pool-4x3-720.8b734e15.webp",
+        720
+      ],
+      [
+        "/img/pool-4x3-960.de9a3663.webp",
         960
       ],
       [
-        "/img/pool-4x3-1200.11dfe62a.webp",
+        "/img/pool-4x3-1200.da770c7b.webp",
+        1200
+      ]
+    ],
+    "avif": [
+      [
+        "/img/pool-4x3-400.b0f9b325.avif",
+        400
+      ],
+      [
+        "/img/pool-4x3-560.e67c3f8c.avif",
+        560
+      ],
+      [
+        "/img/pool-4x3-720.3e54c710.avif",
+        720
+      ],
+      [
+        "/img/pool-4x3-960.1417bf64.avif",
+        960
+      ],
+      [
+        "/img/pool-4x3-1200.be9c3d11.avif",
         1200
       ]
     ]
@@ -566,21 +1002,47 @@
   "swing-4x3": {
     "width": 1200,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/swing-4x3-400.8cc5271c.webp",
+        "/img/swing-4x3-400.fd9700db.webp",
         400
       ],
       [
-        "/img/swing-4x3-640.d19e81ec.webp",
-        640
+        "/img/swing-4x3-560.bf88a525.webp",
+        560
       ],
       [
-        "/img/swing-4x3-960.b82a86fc.webp",
+        "/img/swing-4x3-720.5e0249ce.webp",
+        720
+      ],
+      [
+        "/img/swing-4x3-960.95ad599e.webp",
         960
       ],
       [
-        "/img/swing-4x3-1200.ef712bfb.webp",
+        "/img/swing-4x3-1200.982a0ac2.webp",
+        1200
+      ]
+    ],
+    "avif": [
+      [
+        "/img/swing-4x3-400.f8357763.avif",
+        400
+      ],
+      [
+        "/img/swing-4x3-560.8f764e7b.avif",
+        560
+      ],
+      [
+        "/img/swing-4x3-720.30d5302e.avif",
+        720
+      ],
+      [
+        "/img/swing-4x3-960.dd58231e.avif",
+        960
+      ],
+      [
+        "/img/swing-4x3-1200.9e59e8bb.avif",
         1200
       ]
     ]
@@ -588,21 +1050,47 @@
   "theatre-4x3": {
     "width": 1200,
     "height": 900,
-    "variants": [
+    "webp": [
       [
-        "/img/theatre-4x3-400.68a61af9.webp",
+        "/img/theatre-4x3-400.2c534424.webp",
         400
       ],
       [
-        "/img/theatre-4x3-640.0b366211.webp",
-        640
+        "/img/theatre-4x3-560.1e1e6eb1.webp",
+        560
       ],
       [
-        "/img/theatre-4x3-960.c70decaa.webp",
+        "/img/theatre-4x3-720.cb8b94ad.webp",
+        720
+      ],
+      [
+        "/img/theatre-4x3-960.157e07c0.webp",
         960
       ],
       [
-        "/img/theatre-4x3-1200.f08c579e.webp",
+        "/img/theatre-4x3-1200.aa1c63c6.webp",
+        1200
+      ]
+    ],
+    "avif": [
+      [
+        "/img/theatre-4x3-400.5f92c1fa.avif",
+        400
+      ],
+      [
+        "/img/theatre-4x3-560.7ca88de6.avif",
+        560
+      ],
+      [
+        "/img/theatre-4x3-720.22cfc744.avif",
+        720
+      ],
+      [
+        "/img/theatre-4x3-960.eb1e2954.avif",
+        960
+      ],
+      [
+        "/img/theatre-4x3-1200.a3a7c749.avif",
         1200
       ]
     ]

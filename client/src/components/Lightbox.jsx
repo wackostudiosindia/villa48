@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLang } from '../lib/i18n';
-import { srcSet, imgUrl } from './Img';
+import Img from './Img';
 
 export default function Lightbox({ items, index, onIndex, onClose }) {
   const { t } = useLang();
@@ -37,14 +37,14 @@ export default function Lightbox({ items, index, onIndex, onClose }) {
     >
       <button ref={closeRef} type="button" aria-label="Close" onClick={onClose} className={ctl} style={{ top: 'calc(8px + env(safe-area-inset-top,0px))', right: 'max(8px,env(safe-area-inset-right,0px))' }}>×</button>
       <button type="button" aria-label="Previous" onClick={() => step(-1)} className={`${ctl} top-1/2`} style={{ left: 'max(8px,env(safe-area-inset-left,0px))' }}>‹</button>
-      <img
+      <Img
         key={g.s}
-        src={imgUrl(g.s, 1200)}
-        srcSet={srcSet(g.s)}
-        sizes="(min-width: 1200px) 1200px, 100vw"
+        name={g.s}
         alt={t(g.k)}
+        eager
+        sizes="(min-width: 1200px) 1200px, 100vw"
         onLoad={() => setLoading(false)}
-        ref={(el) => el && el.complete && loading && setLoading(false)}
+        imgRef={(el) => el && el.complete && loading && setLoading(false)}
         className={`max-h-[78vh] max-w-[min(1200px,100%)] object-contain shadow-[0_30px_80px_rgba(0,0,0,.45)] transition-[opacity,transform] duration-[350ms,450ms] ease-out-soft ${loading ? 'scale-[.985] opacity-0' : ''}`}
       />
       <p className="text-center text-xs leading-[1.3] font-medium tracking-[.16em] text-cream uppercase">

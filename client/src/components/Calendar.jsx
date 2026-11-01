@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLang } from '../lib/i18n';
 import { useBooking } from '../lib/booking';
 import { isoDate } from '../lib/motion';
@@ -5,6 +6,10 @@ import { isoDate } from '../lib/motion';
 export default function Calendar() {
   const { t, fmt } = useLang();
   const { today, booked, selected, setSelected, viewMonth, setViewMonth, formatSelected } = useBooking();
+  // The calendar depends on today's date, so it's drawn in the visitor's browser, not in the pre-rendered page.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return <div className="min-h-[470px]" aria-hidden="true" />;
 
   const y = viewMonth.getFullYear();
   const m = viewMonth.getMonth();

@@ -11,7 +11,7 @@ export const LOCALES = { en: 'en-IN', hi: 'en-IN', gu: 'gu-IN' };
 const LOADERS = { hi: () => import('../data/lang/hi'), gu: () => import('../data/lang/gu') };
 const STORAGE_KEY = 'v48-lang';
 
-function initialLang() {
+function savedLang() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'en' || LOADERS[saved]) return saved;
@@ -20,8 +20,10 @@ function initialLang() {
 }
 
 export function LangProvider({ children }) {
-  const [lang, setLangState] = useState(initialLang);
+  // The pre-rendered page is in English; a visitor's saved choice is applied right after the page loads.
+  const [lang, setLangState] = useState('en');
   const [packs, setPacks] = useState({ en });
+  useEffect(() => { const s = savedLang(); if (s !== 'en') setLangState(s); }, []);
 
   // Fetch a language pack the first time it's needed.
   useEffect(() => {

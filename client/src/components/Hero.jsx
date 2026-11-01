@@ -7,7 +7,7 @@ export default function Hero() {
   const { t } = useLang();
   const stats = [['35', 'st1'], ['20', 'st2'], ['1', 'st3']];
   return (
-    <section className="hero relative z-1 mx-auto grid max-w-[1180px] items-center gap-10 pt-[104px] pb-[clamp(48px,8vh,96px)] lg:grid-cols-[1.05fr_.95fr] lg:gap-[72px] lg:pt-[120px]">
+    <section className="hero lit relative z-1 mx-auto grid max-w-[1180px] items-center gap-10 pt-[104px] pb-[clamp(48px,8vh,96px)] lg:grid-cols-[1.05fr_.95fr] lg:gap-[72px] lg:pt-[120px]">
       <div className="flex min-w-0 flex-col gap-6">
         <Reveal>
           <Img name="word_dark" sizes="133px" eager className="tone-d h-[52px] w-auto sm:h-[60px]" alt="Villa 48, Farm Estate Retreat" />
@@ -31,7 +31,7 @@ export default function Hero() {
         </Reveal>
       </div>
       <Reveal delay={0.12}>
-        <Frame name="exterior-hero" alt="Villa 48 farmhouse front with yellow wall and palms" ratio="aspect-[4/5]" sizes="(min-width: 920px) 520px, calc(100vw - 46px)" parallax={false} eager>
+        <Frame name="exterior-hero" alt="Villa 48 farmhouse front with yellow wall and palms" ratio="aspect-[4/5]" sizes="(min-width: 920px) 520px, calc(100vw - 46px)" parallax={false} eager priority>
           <div className="absolute -bottom-[8%] -left-[4%] z-3 aspect-square w-[44%] overflow-hidden border-[6px] border-bar shadow-[0_20px_40px_rgba(0,0,0,.25)] transition-[border-color] duration-500 sm:-left-[8%]">
             <Img name="poollawn-square" sizes="(min-width: 920px) 230px, 45vw" className="h-full w-full object-cover" alt="Swimming pool and lawn" />
           </div>

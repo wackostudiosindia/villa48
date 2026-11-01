@@ -101,7 +101,7 @@ export default function Place() {
           <g ref={treesG} />
           <path ref={road} className="road" d={ROAD} />
           <path className="dash" d={ROAD} />
-          <path ref={trail} className="trail" d={ROAD} style={{ strokeDashoffset: reduceMotion ? 0 : 9999 }} />
+          <path ref={trail} className="trail" d={ROAD} strokeDasharray="1000" strokeDashoffset="1000" />
           <circle className="pulse" cx="70" cy="250" r="14" /><circle className="pulse b" cx="70" cy="250" r="14" />
           <circle className="dot" cx="70" cy="250" r="8" />
           <text x="70" y="284" textAnchor="middle">{t('p_surat')}</text>

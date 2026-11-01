@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { reduceMotion } from './lib/motion';
+import { lazy, Suspense } from 'react';
 import { Sprite } from './components/Icon';
 import Intro from './components/Intro';
 import Sky from './components/Sky';
@@ -8,16 +7,12 @@ import Header from './components/Header';
 import Thread from './components/Thread';
 import Hero from './components/Hero';
 import Chapter from './components/Chapter';
-import Amenities from './components/Amenities';
-import Gallery from './components/Gallery';
-import Booking from './components/Booking';
-import HowItWorks from './components/HowItWorks';
-import Rules from './components/Rules';
-import Place from './components/Place';
-import Closing from './components/Closing';
-import Footer from './components/Footer';
 import StickyBook from './components/StickyBook';
 import QuickBooking from './components/QuickBooking';
+
+// Below the chapters: pre-rendered HTML, hydrated as separate chunks after the first screen.
+const BelowFold = lazy(() => import('./components/BelowFold'));
+const Footer = lazy(() => import('./components/Footer'));
 
 /* One scroll from morning to night: four time-of-day chapters, then the practical sections. */
 const CHAPTERS = [
@@ -32,10 +27,6 @@ const CHAPTERS = [
 ];
 
 export default function App() {
-  useEffect(() => {
-    if (!reduceMotion) document.documentElement.classList.add('th');
-  }, []);
-
   return (
     <>
       <Sprite />
@@ -47,15 +38,13 @@ export default function App() {
         <Thread />
         <Hero />
         {CHAPTERS.map((c) => <Chapter key={c.id} {...c} />)}
-        <Amenities />
-        <Gallery />
-        <Booking />
-        <HowItWorks />
-        <Rules />
-        <Place />
-        <Closing />
+        <Suspense fallback={null}>
+          <BelowFold />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
       <StickyBook />
       <QuickBooking />
     </>
