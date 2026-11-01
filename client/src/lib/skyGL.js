@@ -4,7 +4,8 @@
   createGL() returns null if WebGL can't be used, and the 2D sky in sky.js is drawn instead.
 */
 /* eslint-disable */
-import { AdditiveBlending, BufferAttribute, BufferGeometry, Mesh, OrthographicCamera, PlaneGeometry, Points, Scene, ShaderMaterial, Vector2, Vector3, WebGLRenderer } from 'three';
+import { AdditiveBlending, BufferAttribute, BufferGeometry, Mesh, OrthographicCamera, PlaneGeometry, Points, Scene, ShaderMaterial, TextureLoader, Vector2, Vector3, WebGLRenderer } from 'three';
+import moonUrl from '../assets/moon.webp';
 import { clamp, smooth, reduceMotion } from './motion';
 
 function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -34,7 +35,8 @@ var glR,glScene,glCam,glMat,glStars,glFlies,glBirds,W=1,H=1;
       'float craters(vec2 p){vec2 ip=floor(p),fp=fract(p);float h=0.;for(int j=-1;j<=1;j++){for(int i=-1;i<=1;i++){vec2 g=vec2(float(i),float(j));vec2 o=hash2(ip+g);if(o.x<.62){vec2 r=g+o-fp;float t=length(r)/(.16+.34*fract(o.y*7.3+o.x*3.1));h+=smoothstep(1.,.15,t)*-.6+exp(-pow((t-1.05)*7.,2.))*.45;}}}return h;}',
       'float lunarH(vec2 sp){return craters(sp*1.6)*.7+craters(sp*4.3)*.34+fbm3(sp*7.)*.2;}',
       /* the moon: a lit sphere with maria, craters and a soft terminator */
-      'vec3 moonShade(vec2 d,float r2,vec3 sky){float z=sqrt(max(1.-r2,0.));vec3 n=vec3(d,z);vec2 sp=d*1.25;float mar=smoothstep(.44,.6,fbm3(sp*1.1+vec2(4.2,1.3)));mar=max(mar,.7*smoothstep(.5,.66,fbm3(sp*2.1+vec2(9.,2.))));float alb=.95-.36*mar;alb*=.92+.12*fbm3(sp*7.+3.);alb+=craters(sp*7.+1.7)*.045;vec2 ty=sp-vec2(-.3,-.45);alb+=.14*exp(-dot(ty,ty)*120.);vec3 L=normalize(vec3(.62,-.1,.78));float ci=max(dot(n,L),0.);float ls=clamp(2.*ci/(ci+max(z,.05)),0.,1.08);float lit=smoothstep(0.,.1,ci);vec3 mc=vec3(1.,.975,.93)*alb*ls*.96;vec3 dark=sky*.88+vec3(.02,.026,.034)*alb;return mix(dark,mc,lit);}',
+      'uniform sampler2D uMoonTex;',
+      'vec3 moonShade(vec2 d,float r2,vec3 sky){float z=sqrt(max(1.-r2,0.));vec3 n=vec3(d,z);float tx=texture2D(uMoonTex,d*.5+.5).r;float alb=.34+1.0*tx;vec3 L=normalize(vec3(.5,-.1,.86));float ci=max(dot(n,L),0.);float ls=clamp(2.*ci/(ci+max(z,.05)),0.,1.12);float lit=smoothstep(0.,.07,ci);vec3 mc=vec3(1.,.975,.935)*alb*ls;vec3 dark=sky*.9+vec3(.026,.032,.042)*(.3+tx);return mix(dark,mc,lit);}',
       /* one mountain range: ridged skyline, strata, sun-facing light, rim light and haze */
       'vec4 mountLayer(vec2 uv,float asp,float xoff,float base,float amp,float freq,float seed,vec3 baseCol,float fogAmt,vec3 fog,float lx,float lI,vec3 warm){float x=(uv.x+xoff)*asp*freq;float h=base+amp*ridge(x,seed)*1.5;float e=.01;float h2=base+amp*ridge(x+e,seed)*1.5;float slope=(h2-h)/(e/(asp*freq));float m=smoothstep(h+.0022,h-.0022,uv.y);if(m<.001)return vec4(0.);float dpt=h-uv.y;vec2 q=vec2(uv.x*asp,uv.y);float rock=fbm3(vec2(q.x*9.+q.y*5.,q.y*26.)+seed*3.);float lit=clamp(.55-slope*clamp((lx-uv.x)*3.,-1.,1.)*.06,0.,1.);vec3 c=baseCol*(.72+.55*rock);c*=.62+.7*lit*lI+.25*(1.-lI);c*=.75+.45*smoothstep(0.,.14,dpt);float st=.5+.5*sin(uv.y*160.+rock*10.);c*=.95+.08*st;c+=warm*exp(-dpt*150.)*lit*.55;c=mix(c,fog,fogAmt*(.7+.6*smoothstep(0.,.25,dpt)));return vec4(c,m);}'
     ].join('\n');
@@ -68,7 +70,7 @@ var glR,glScene,glCam,glMat,glStars,glFlies,glBirds,W=1,H=1;
       '  col=mix(col,min(disc*1.04,vec3(1.)),(1.-smoothstep(R*.78,R*1.1,rs))*uSunA);',
       /* moon: a real-looking gibbous moon with maria and a cool halo */
       '  float Rm=uMoonR;vec2 dm=(uv-uMoon)*vec2(asp,1.)/Rm;float rm=length(dm);',
-      '  col+=vec3(.78,.83,.88)*(exp(-rm*.6)*.035+exp(-rm*2.)*.09)*uMoonA;',
+      '  col+=vec3(.78,.83,.88)*(exp(-rm*.5)*.05+exp(-rm*1.8)*.14)*uMoonA;',
       '  if(rm<1.02){vec3 mc=moonShade(dm,min(rm*rm,1.),col);col=mix(col,mc,(1.-smoothstep(.975,1.,rm))*uMoonA);}',
       /* clouds: domain-warped noise, lit from one side */
       '  float t=uT*.012;',
@@ -109,7 +111,7 @@ var glR,glScene,glCam,glMat,glStars,glFlies,glBirds,W=1,H=1;
     ].join('\n');
     glMat=new ShaderMaterial({
       uniforms:{uRes:{value:new Vector2(1,1)},uSun:{value:new Vector2(.1,.5)},uMoon:{value:new Vector2(.3,.7)},uMouse:{value:new Vector2(0,0)},
-        uT:{value:0},uP:{value:0},uN:{value:0},uSunA:{value:1},uMoonA:{value:0},uSunE:{value:.5},uMoonPh:{value:1},uMoonR:{value:.05},uTop:{value:new Vector3(.9,.9,.8)},uBot:{value:new Vector3(.97,.95,.9)}},
+        uT:{value:0},uP:{value:0},uN:{value:0},uSunA:{value:1},uMoonA:{value:0},uSunE:{value:.5},uMoonPh:{value:1},uMoonR:{value:.05},uMoonTex:{value:null},uTop:{value:new Vector3(.9,.9,.8)},uBot:{value:new Vector3(.97,.95,.9)}},
       vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}',
       fragmentShader:frag,depthTest:false,depthWrite:false});
     var quad=new Mesh(new PlaneGeometry(2,2),glMat);quad.frustumCulled=false;quad.renderOrder=0;glScene.add(quad);
@@ -153,8 +155,9 @@ function glResize(w,h){
   glPx=Math.min(window.devicePixelRatio||1,1.5)*(W<700?.75:.95);
   glR.setPixelRatio(glPx);glR.setSize(W,H,false);
   glMat.uniforms.uRes.value.set(glR.domElement.width,glR.domElement.height);
-  glStars.material.uniforms.uPx.value=glPx*1.4;glFlies.material.uniforms.uPx.value=glPx*1.4;glBirds.material.uniforms.uPx.value=glPx*1.4;glStars.material.uniforms.uAsp.value=W/Math.max(H,1);glMat.uniforms.uMoonR.value=W<700?.034:.042;
+  glStars.material.uniforms.uPx.value=glPx*1.4;glFlies.material.uniforms.uPx.value=glPx*1.4;glBirds.material.uniforms.uPx.value=glPx*1.4;glStars.material.uniforms.uAsp.value=W/Math.max(H,1);glMat.uniforms.uMoonR.value=W<700?.04:.05;
 }
+var moonLoaded=false;
 function glDraw(p,t,sky,n){
   var u=glMat.uniforms,tt=reduceMotion?6:t;
   glMouse.x+=(glMouse.tx-glMouse.x)*.05;glMouse.y+=(glMouse.ty-glMouse.y)*.05;
@@ -163,6 +166,7 @@ function glDraw(p,t,sky,n){
   var sp=p/.72,sc=clamp(sp,0,1);
   u.uSun.value.set(.12+.76*sc,.26+Math.sin(Math.PI*sc)*.55);u.uSunE.value=Math.sin(Math.PI*sc);u.uSunA.value=(1-smooth(.9,1.02,sp))*.9;
   var m=clamp((p-.62)/.38,0,1);
+  if(m>0&&!moonLoaded){moonLoaded=true;u.uMoonTex.value=new TextureLoader().load(moonUrl);}
   u.uMoon.value.set(W<700?.74+.12*m:.76+.12*m,.5+.34*Math.sin(m*Math.PI*.5));u.uMoonA.value=smooth(.22,.45,m)*(W<700?.8:.95);
   var su=glStars.material.uniforms;su.uT.value=tt;su.uN.value=n;su.uMoonC.value.set(u.uMoon.value.x*2-1,u.uMoon.value.y*2-1);
   glFlies.material.uniforms.uT.value=tt;glFlies.material.uniforms.uN.value=n;glBirds.material.uniforms.uT.value=tt;glBirds.material.uniforms.uN.value=n;
@@ -174,7 +178,7 @@ return {
   draw:glDraw,
   destroy:function(){
     document.removeEventListener('pointermove',onPointer);
-    glR.dispose();glMat.dispose();glStars.geometry.dispose();glStars.material.dispose();glFlies.geometry.dispose();glFlies.material.dispose();glBirds.geometry.dispose();glBirds.material.dispose();
+    if(glMat.uniforms.uMoonTex.value)glMat.uniforms.uMoonTex.value.dispose();glR.dispose();glMat.dispose();glStars.geometry.dispose();glStars.material.dispose();glFlies.geometry.dispose();glFlies.material.dispose();glBirds.geometry.dispose();glBirds.material.dispose();
     if(gc&&gc.parentNode)gc.parentNode.removeChild(gc);
   }
 };

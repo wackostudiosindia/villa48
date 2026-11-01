@@ -5,6 +5,7 @@
 */
 /* eslint-disable */
 import { clamp, pad, reduceMotion } from './motion';
+import moonUrl from '../assets/moon.webp';
 
 export function createSky(canvas, gl) {
 var STOPS=[
@@ -28,7 +29,7 @@ function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.i
 var rnd=rng(48),stars=[],flies=[],i;
 for(i=0;i<140;i++)stars.push({x:rnd(),y:rnd()*.7,s:rnd()*1.3+.4,ph:rnd()*6.28});
 for(i=0;i<20;i++)flies.push({x:rnd(),y:.72+rnd()*.25,vx:(rnd()-.5)*.012,vy:(rnd()-.5)*.008,ph:rnd()*6.28});
-var lastRW=0,lastRH=0;
+var lastRW=0,lastRH=0,moonImg=null;
 function resize(force){if(!force&&innerWidth===lastRW&&Math.abs(innerHeight-lastRH)<200)return;lastRW=innerWidth;lastRH=innerHeight;var d=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=Math.round(W*d);cv.height=Math.round(H*d);ctx.setTransform(d,0,0,d,0,0);if(gl)gl.resize(W,H);}
 var DAYH=[hex('#9db38a'),hex('#7e9a72'),hex('#5f7f58')],NIGHTH=[hex('#0d2c1d'),hex('#0a2216'),hex('#06170f')];
 function hillY(x,base,amp,cyc,ph){var u=x/W*Math.PI*2*cyc+ph;return base+amp*Math.sin(u)+amp*.5*Math.sin(u*2.3+ph*1.7);}
@@ -47,13 +48,17 @@ function draw(p,t,dt,sky,n){
   var m=clamp((p-.62)/.38,0,1),ma=smooth(.22,.45,m)*(W<700?.8:.95);
   if(ma>0){
     /* same place as the WebGL moon: upper right, night only; a soft-lit disc with a cool halo */
-    var mx=W*(W<700?.74+.12*m:.76+.12*m),my=H*(1-(.5+.34*Math.sin(m*Math.PI*.5))),mr=H*(W<700?.034:.042);
+    var mx=W*(W<700?.74+.12*m:.76+.12*m),my=H*(1-(.5+.34*Math.sin(m*Math.PI*.5))),mr=H*(W<700?.04:.05);
     var mg=ctx.createRadialGradient(mx,my,mr*.8,mx,my,mr*4.5);mg.addColorStop(0,'rgba(200,212,224,'+(.16*ma).toFixed(3)+')');mg.addColorStop(1,'rgba(200,212,224,0)');
     ctx.fillStyle=mg;ctx.fillRect(mx-mr*4.5,my-mr*4.5,mr*9,mr*9);
-    var md=ctx.createRadialGradient(mx+mr*.35,my-mr*.1,mr*.1,mx,my,mr);md.addColorStop(0,'rgba(250,246,234,'+ma.toFixed(3)+')');md.addColorStop(.75,'rgba(226,222,208,'+ma.toFixed(3)+')');md.addColorStop(1,'rgba(196,192,180,'+ma.toFixed(3)+')');
-    ctx.fillStyle=md;ctx.beginPath();ctx.arc(mx,my,mr,0,6.283);ctx.fill();
-    ctx.fillStyle='rgba(120,124,118,'+(.16*ma).toFixed(3)+')';
-    [[-.3,-.25,.28],[.1,.2,.22],[-.05,-.45,.14],[.35,-.1,.12]].forEach(function(c){ctx.beginPath();ctx.ellipse(mx+c[0]*mr,my+c[1]*mr,c[2]*mr*1.3,c[2]*mr,0.4,0,6.283);ctx.fill();});
+    if(!moonImg){moonImg=new Image();moonImg.src=moonUrl;}
+    if(moonImg.complete&&moonImg.naturalWidth){
+      /* the real lunar photo, clipped to a disc and shaded from the right so it reads as a gibbous moon */
+      ctx.save();ctx.beginPath();ctx.arc(mx,my,mr,0,6.283);ctx.clip();
+      ctx.globalAlpha=ma*.95;ctx.drawImage(moonImg,mx-mr,my-mr,mr*2,mr*2);ctx.globalAlpha=1;
+      var sh=ctx.createLinearGradient(mx-mr,my,mx+mr,my);sh.addColorStop(0,'rgba(10,16,26,'+(.9*ma).toFixed(3)+')');sh.addColorStop(.28,'rgba(10,16,26,'+(.45*ma).toFixed(3)+')');sh.addColorStop(.6,'rgba(10,16,26,0)');
+      ctx.fillStyle=sh;ctx.fillRect(mx-mr,my-mr,mr*2,mr*2);ctx.restore();
+    }
   }
   var hc=[0,1,2].map(function(j){return mix(DAYH[j],NIGHTH[j],n);});
   hill(H*.84,H*.016,1.3,.4,hc[0]);hill(H*.9,H*.018,1.1,2.2,hc[1]);hill(H*.955,H*.014,.9,4.1,hc[2]);
