@@ -32,6 +32,12 @@ const CROPS = {
   'pool-4x3': { from: 'pool', aspect: 4 / 3, x: 0.5, y: 0.5 },
   'swing-4x3': { from: 'swing', aspect: 4 / 3, x: 0.5, y: 0.5 },
   'theatre-4x3': { from: 'theatre', aspect: 4 / 3, x: 0.5, y: 0.5 },
+  /* the large edge-to-edge photos in the hero and the four chapters (wide screens) */
+  'exterior-sq': { from: 'exterior', aspect: 1, x: 0.44, y: 0.5 },
+  'entrance-5x4': { from: 'entrance', aspect: 5 / 4, x: 0.5, y: 0.6 },
+  'pool-5x4': { from: 'pool', aspect: 5 / 4, x: 0.5, y: 0.5 },
+  'swing-5x4': { from: 'swing', aspect: 5 / 4, x: 0.35, y: 0.5 },
+  'theatre-5x4': { from: 'theatre', aspect: 5 / 4, x: 0.5, y: 0.5 },
 };
 
 async function save(buf, name, w, ext) {

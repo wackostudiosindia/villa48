@@ -60,7 +60,7 @@ export default function Thread() {
       }
       // Sections below the fold may not be rendered yet (content-visibility), so place their dots from the
       // section box and its top padding instead of measuring the eyebrow inside it.
-      for (const id of ['amenities', 'gallery', 'booking', 'how', 'rules', 'place']) {
+      for (const id of ['reel', 'amenities', 'gallery', 'booking', 'how', 'rules', 'place']) {
         const sec = document.getElementById(id);
         pts.push({ x: mx, y: off(sec).y + parseFloat(getComputedStyle(sec).paddingTop) + 7, node: true });
       }

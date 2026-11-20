@@ -5,7 +5,11 @@ export const GALLERY = [
  {s:'living2',c:'live',k:'cap_swing',w:1600,h:900},{s:'living',c:'live',k:'k_liv2',w:1600,h:900},{s:'kitchen2',c:'live',k:'k_kit',w:1600,h:900},{s:'dining',c:'live',k:'k_din',w:1600,h:900},
  {s:'bed1',c:'room',k:'k_bed',w:1600,h:900},{s:'bed2',c:'room',k:'k_bed',w:1600,h:900},{s:'bed3',c:'room',k:'k_bed',w:1600,h:900},{s:'bed6',c:'room',k:'k_bed',w:1600,h:900},
  {s:'bath1',c:'room',k:'k_bath',w:1600,h:900},{s:'bath2',c:'room',k:'k_bath',w:1600,h:900},
- {s:'theatre',c:'fun',k:'k_theatre',w:1600,h:900},{s:'kids2',c:'fun',k:'k_kids',w:1600,h:900},{s:'stairs1',c:'live',k:'k_st',w:1600,h:900}
+ {s:'theatre',c:'fun',k:'k_theatre',w:1600,h:900},{s:'kids2',c:'fun',k:'k_kids',w:1600,h:900},{s:'stairs1',c:'live',k:'k_st',w:1600,h:900},
+ {s:'pool2',c:'pool',k:'k_pl',w:1600,h:900},{s:'lawn',c:'out',k:'k_pl',w:900,h:1600},{s:'gate',c:'out',k:'k_ent',w:1600,h:900},{s:'roofterrace',c:'out',k:'k_ter',w:1600,h:900},
+ {s:'swing2',c:'live',k:'k_swing',w:900,h:1600},{s:'kitchen3',c:'live',k:'k_kit',w:1600,h:900},
+ {s:'bed7',c:'room',k:'k_bed',w:1600,h:900},{s:'bed8',c:'room',k:'k_bed',w:1600,h:900},{s:'bath3',c:'room',k:'k_bath',w:1600,h:900},{s:'bath4',c:'room',k:'k_bath',w:1600,h:900},
+ {s:'kids3',c:'fun',k:'k_kids',w:1600,h:900}
 ];
 
 export const GALLERY_TABS = [

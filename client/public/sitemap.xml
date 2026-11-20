@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://villa48.vercel.app/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://villa48.vercel.app/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <image:image><image:loc>https://villa48.vercel.app/og.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://villa48.vercel.app/video/villa48-reel-poster.webp</video:thumbnail_loc>
+      <video:title>Villa 48 Farmhouse in 45 seconds</video:title>
+      <video:description>A short walk through Villa 48, a private farmhouse near Surat.</video:description>
+      <video:content_loc>https://villa48.vercel.app/video/villa48-reel.mp4</video:content_loc>
+      <video:duration>45</video:duration>
+    </video:video>
+  </url>
 </urlset>

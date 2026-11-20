@@ -30,8 +30,8 @@ export default function Hero() {
           ))}
         </Reveal>
       </div>
-      <Reveal delay={0.12}>
-        <Frame name="exterior-hero" alt="Villa 48 farmhouse front with yellow wall and palms" ratio="aspect-[4/5]" sizes="(min-width: 920px) 520px, calc(100vw - 46px)" parallax={false} eager priority>
+      <Reveal delay={0.12} className="hero-bleed">
+        <Frame name="exterior-sq" alt="Villa 48 farmhouse front with yellow wall and palms" ratio="aspect-[4/5] lg:aspect-square" sizes="(min-width: 920px) 50vw, 100vw" parallax={false} eager priority>
           <div className="absolute -bottom-[8%] -left-[4%] z-3 aspect-square w-[44%] overflow-hidden border-[6px] border-bar shadow-[0_20px_40px_rgba(0,0,0,.25)] transition-[border-color] duration-500 sm:-left-[8%]">
             <Img name="poollawn-square" sizes="(min-width: 920px) 230px, 45vw" className="h-full w-full object-cover" alt="Swimming pool and lawn" />
           </div>

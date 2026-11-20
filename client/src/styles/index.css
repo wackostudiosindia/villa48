@@ -194,7 +194,28 @@
   .frame img { width: 100%; height: 100%; object-fit: cover; }
   .frame figcaption { position: relative; z-index: 1; padding-top: 10px; font: 500 11px/1.3 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-soft); }
   .frame > .chev { position: absolute; z-index: 2; top: -9px; left: 24px; width: 44px; height: 22px; }
-  .par img { transform: scale(1.12) translateY(var(--py, 0px)); will-change: transform; }
+  .par img { transform: scale(var(--pz, 1.12)) translateY(var(--py, 0px)); will-change: transform; }
+
+  /* the large photos in the hero and the chapters run from the text column out to the edge of the screen */
+  @media (min-width: 53.75rem) {
+    .bleed-r, .bleed-l { --out: max(16px, (100vw - 1180px) / 2); }
+    .bleed-r { margin-right: calc(-1 * var(--out)); }
+    .bleed-l { margin-left: calc(-1 * var(--out)); }
+    .bleed-r .frame, .bleed-l .frame { margin: 0 0 14px; }
+    .bleed-l .frame > .chev { left: auto; right: 24px; }
+    .bleed-l .frame figcaption { padding-left: calc(var(--out) - 0px); }
+  }
+  @media (min-width: 57.5rem) {
+    .hero-bleed { margin-right: calc(-1 * max(16px, (100vw - 1180px) / 2)); }
+    .hero-bleed .frame { margin: 0 0 14px; }
+  }
+  /* on phones they run edge to edge */
+  @media (max-width: 53.6875rem) {
+    .bleed-r, .bleed-l { margin-inline: -16px; }
+    .bleed-r .frame, .bleed-l .frame { margin: 0 0 14px; }
+    .bleed-r .frame::before, .bleed-l .frame::before { display: none; }
+    .bleed-r .frame figcaption, .bleed-l .frame figcaption { padding-inline: 16px; }
+  }
 
   /* sections settle in as you reach them */
   html.th .frame::before { transition: transform .9s var(--ease-out-soft), opacity .6s; }

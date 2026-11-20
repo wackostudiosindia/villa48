@@ -3,7 +3,7 @@ import Section from './Section';
 import Reveal from './Reveal';
 import Frame from './Frame';
 
-/* One time-of-day chapter: text on one side, framed photo on the other, and a link to the next chapter. */
+/* One time-of-day chapter: text on one side, a large framed photo running out to the screen edge on the other, and a link to the next chapter. */
 export default function Chapter({ id, flip, eyebrow, title, body, photo, next }) {
   const { t } = useLang();
   return (
@@ -23,8 +23,8 @@ export default function Chapter({ id, flip, eyebrow, title, body, photo, next })
           </a>
         )}
       </Reveal>
-      <Reveal delay={0.1} className={flip ? 'ch:-order-1' : ''}>
-        <Frame {...photo} caption={t(photo.caption)} />
+      <Reveal delay={0.1} className={flip ? 'bleed-l ch:-order-1' : 'bleed-r'}>
+        <Frame {...photo} caption={t(photo.caption)} ratio="aspect-[5/4]" sizes="(min-width: 860px) 60vw, 100vw" zoom />
       </Reveal>
     </Section>
   );
