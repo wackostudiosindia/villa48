@@ -46,17 +46,17 @@ export default function Header() {
         <Img name="icon_light" sizes="34px" className="tone-n h-[38px] w-auto sm:h-11" alt="Villa 48" />
       </a>
       <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-        <div className="hidden items-center gap-2 text-[11px] leading-none font-medium tracking-[.14em] whitespace-nowrap uppercase sm:flex" aria-hidden="true">
+        <div className="flex items-center gap-2 text-[11px] leading-none font-medium tracking-[.14em] whitespace-nowrap uppercase" aria-hidden="true">
           <i className="size-[7px] rounded-full bg-gold" />
           <span>{clock}</span>
-          <span>{(t('phase') || [])[phase]}</span>
+          <span className="max-sm:hidden">{(t('phase') || [])[phase]}</span>
         </div>
         <button
           type="button"
           aria-expanded={drawerOpen}
           aria-controls="quick-booking"
           onClick={drawerOpen ? closeDrawer : openDrawer}
-          className="btn-cta caps relative isolate min-h-10 overflow-hidden px-2.5 text-[10px] leading-none font-bold tracking-[.1em] whitespace-nowrap transition-transform hover:-translate-y-px sm:px-4 sm:text-[11px]"
+          className="btn-cta caps relative isolate min-h-10 overflow-hidden max-sm:hidden px-2.5 text-[10px] leading-none font-bold tracking-[.1em] whitespace-nowrap transition-transform hover:-translate-y-px sm:px-4 sm:text-[11px]"
         >
           {t('btn_book')}
         </button>

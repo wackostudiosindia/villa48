@@ -51,6 +51,7 @@ export default {
   "rl_ig": "More on Instagram",
   "rl_start": "Play the villa video",
   "rl_pause": "Pause the villa video",
+  "g_more": "Show all {n} photos",
   "am_e": "The property",
   "am_h": "Everything under one roof.",
   "a1h": "Swimming pool",

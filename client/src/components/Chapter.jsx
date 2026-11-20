@@ -7,7 +7,7 @@ import Frame from './Frame';
 export default function Chapter({ id, flip, eyebrow, title, body, photo, next }) {
   const { t } = useLang();
   return (
-    <Section id={id} className="grid items-center gap-[34px] py-[clamp(48px,10vh,110px)] ch:grid-cols-2 ch:gap-20">
+    <Section id={id} className="grid items-center gap-7 py-10 ch:grid-cols-2 ch:gap-20 ch:py-[clamp(48px,10vh,110px)]">
       <Reveal className="flex min-w-0 flex-col gap-[18px]">
         <span className="eyebrow halo">{t(eyebrow)}</span>
         <h2 className="halo">{t(title)}</h2>

@@ -51,6 +51,7 @@ export default {
   "rl_ig": "Instagram par aur dekho",
   "rl_start": "Villa ka video chalao",
   "rl_pause": "Villa ka video roko",
+  "g_more": "Saari {n} photos dekho",
   "am_e": "Property",
   "am_h": "Sab kuch ek hi chhat ke neeche.",
   "a1h": "Swimming pool",

@@ -7,14 +7,19 @@ import Lightbox from './Lightbox';
 import Img from './Img';
 import { layoutChanged } from '../lib/skyStore';
 
+const PHONE_FIRST = 12;
+
 /* Editorial grid: portrait photos span two rows, every seventh landscape photo is a large feature tile. */
 export default function Gallery() {
   const { t } = useLang();
   const [cat, setCat] = useState('all');
   const [open, setOpen] = useState(null);
+  const [all, setAll] = useState(false); // phones show the first PHONE_FIRST photos until asked for the rest
   const view = GALLERY.filter((g) => cat === 'all' || g.c === cat);
 
   const choose = (c) => { setCat(c); setTimeout(layoutChanged, 50); };
+  const showAll = () => { setAll(true); setTimeout(layoutChanged, 50); };
+  const more = !all && view.length > PHONE_FIRST;
 
   return (
     <Section id="gallery" lazy className="grid gap-8 py-[clamp(48px,9vh,100px)]">
@@ -46,7 +51,7 @@ export default function Gallery() {
               aria-label={t(g.k)}
               onClick={() => setOpen(i)}
               data-cursor="view"
-              className={`tile relative block h-full w-full cursor-zoom-in overflow-hidden bg-forest-deep ${span}`}
+              className={`tile relative block h-full w-full cursor-zoom-in overflow-hidden bg-forest-deep ${span} ${more && i >= PHONE_FIRST ? 'max-sm:hidden' : ''}`}
               style={{ '--gd': `${Math.min(i, 8) * 0.05}s` }}
             >
               <Img
@@ -65,6 +70,11 @@ export default function Gallery() {
           );
         })}
       </div>
+      {more && (
+        <button type="button" onClick={showAll} className="btn w-full sm:hidden">
+          {t('g_more').replace('{n}', view.length)}
+        </button>
+      )}
       {open !== null && <Lightbox items={view} index={open} onIndex={setOpen} onClose={() => setOpen(null)} />}
     </Section>
   );

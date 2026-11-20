@@ -20,13 +20,15 @@ export default function Reel() {
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
+    // Phones and data-saver mode never download the video by themselves (8 MB): it plays when tapped.
+    const auto = matchMedia('(min-width: 760px)').matches && !navigator.connection?.saveData;
     const el = box.current;
     if (!el || !('IntersectionObserver' in window)) return;
     const io = new IntersectionObserver(([e]) => {
       const v = vid.current;
       if (!v) return;
       if (e.isIntersecting && e.intersectionRatio > 0.35) {
-        if (!reduceMotion || !v.muted) v.play().catch(() => {});
+        if ((auto && !reduceMotion) || !v.muted) v.play().catch(() => {});
       } else if (!v.paused) v.pause();
     }, { rootMargin: '300px 0px', threshold: [0, 0.35] });
     io.observe(el);
@@ -46,7 +48,7 @@ export default function Reel() {
   };
 
   return (
-    <Section id="reel" className="grid items-center gap-10 py-[clamp(48px,10vh,110px)] ch:grid-cols-[1fr_auto] ch:gap-20">
+    <Section id="reel" className="grid items-center gap-8 py-12 ch:grid-cols-[1fr_auto] ch:gap-20 ch:py-[clamp(48px,10vh,110px)]">
       <div className="flex min-w-0 flex-col gap-6">
         <SectionHead eyebrow={t('rl_e')} title={t('rl_h')} lead={t('rl_p')} />
         <Reveal delay={0.1} className="flex flex-wrap gap-3">
