@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Sprite } from './components/Icon';
 import Intro from './components/Intro';
 import Sky from './components/Sky';
@@ -49,6 +50,7 @@ export default function App() {
       </Suspense>
       <StickyBook />
       <QuickBooking />
+      <Analytics />
     </>
   );
 }
